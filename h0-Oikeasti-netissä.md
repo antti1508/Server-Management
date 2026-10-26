@@ -21,6 +21,8 @@ Tiiviste Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi, linkki: https://partanen
 
 ## a) Paikallista
 
+Paikalliseen virtuaalikoneeseen tarvitaan ISO-levykuva, jonka avulla Debian-käyttöjärjestelmä asennetaan VirtualBox-alustalle. Uusin ISO-tiedosto ladataan Debianin virallisilta verkkosivuilta (https://www.debian.org/distrib). Koska VirtualBox on jo asennettu tietokoneelle, sen asennusta ei käsitellä tässä yhteydessä. Virtuaalikoneen luonti aloitetaan valitsemalla asennuslevykuva ja nimeämällä virtuaalikone. Tämän jälkeen koneelle määritellään suorituskykyasetukset, kuten keskusmuisti, tallennustila ja prosessoriytimien määrä.
+
 ## b) VPS
 
 ## c) Alkutoimet
