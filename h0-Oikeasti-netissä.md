@@ -31,3 +31,5 @@ Tiiviste Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi, linkki: https://partanen
 
 ## Lähteet 
 https://man.openbsd.org/ssh.1
+Karvinen, T. 2026. Palvelinten-hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/
+Karvinen, T. 2026. Palvelinten-hallinta. Luento. Haaga-Helia. 22.10.2026
