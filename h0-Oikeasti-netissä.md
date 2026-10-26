@@ -27,7 +27,23 @@ Paikalliseen virtuaalikoneeseen tarvitaan ISO-levykuva, jonka avulla Debian-käy
 
 Kuva 1. Debian 13 suorityskykyyn liittyvät asetukset
 
-Seuraavaksi käynnistetään virtuaalikone ensimmäisen kerran ja asennettaan käyttöjärjestelmä.
+Seuraavaksi käynnistetään virtuaalikone ensimmäisen kerran ja asennetaan käyttöjärjestelmä. Valitsin asennustyypiksi *Graphical install*.
+
+<img width="629" height="553" alt="kuva" src="https://github.com/user-attachments/assets/3ddf2ce4-a1aa-4ac1-bf99-a074fd30d0b9" />
+
+Kuva 2. Asennusvalikko
+
+Käyttöjärjestelmän asennuksen aikana vastataan useisiin asennuskysymyksiin, joiden valinnat on tiivistetty alle:
+* Käyttöjärjestelmän kieli: Englanti
+* Näppäimistön kieli, aikavyöhyke ja sijainti: Suomi (no dead keys)
+* Hostname: Debian
+* Domain name: blank
+* Uusi käyttäjä: Debian
+* Asetetaan käyttäjien salasanat
+* Levyjaon asetukset: Guided
+* Package manager: deb.debian.org
+* Software selection: Otetaan Debian desktop,  GNOME & standard system utilities (tarvittaessa voi lisätä weppipalvelimen ja ssh-palvelimen)
+
 
 ## b) VPS
 
