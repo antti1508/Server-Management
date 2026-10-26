@@ -14,7 +14,7 @@ Tiiviste Niemi 2025: H4 Tehtävät, linkki: https://github.com/AONCODES/linux-co
 
 Tiiviste Partanen 2025: Harjoitus 5: Nimekäs: a) Nimi, linkki: https://partanennn.github.io/linux-servers/practices/fifth-week.html
 
-* Namecheap tarjoaa verkkotunnuksia vuosipohjaisella rekisteröintimaksulla.
+* Namecheap tarjoaa verkkotunnuksia vuosipohjaisella maksulla.
 * Halvimmillaan verkkotunnuksen voi saada ensimmäiseksi vuodeksi tarjouskampanjasta alle eurolla.
 * Verkkotunnus kohdistetaan omaan palvelimeen Namecheapin DNS-hallinnassa lisäämällä palvelimen julkinen IPv4-osoite A-tietueeseen (A record).
 
