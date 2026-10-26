@@ -25,13 +25,13 @@ Paikalliseen virtuaalikoneeseen tarvitaan ISO-levykuva, jonka avulla Debian-käy
 
 <img width="633" height="689" alt="kuva" src="https://github.com/user-attachments/assets/e6348d13-9eba-4e18-8153-b890d90e8c07" />
 
-Kuva 1. Debian 13 suorityskykyyn liittyvät asetukset
+Kuva 1. Debian 13 suorityskykyyn liittyvät asetukset.
 
 Seuraavaksi käynnistetään virtuaalikone ensimmäisen kerran ja asennetaan käyttöjärjestelmä. Valitsin asennustyypiksi *Graphical install*.
 
 <img width="629" height="553" alt="kuva" src="https://github.com/user-attachments/assets/3ddf2ce4-a1aa-4ac1-bf99-a074fd30d0b9" />
 
-Kuva 2. Asennusvalikko
+Kuva 2. Asennusvalikko.
 
 Käyttöjärjestelmän asennuksen aikana vastataan useisiin asennuskysymyksiin, joiden valinnat on tiivistetty alle:
 * Käyttöjärjestelmän kieli: Englanti
@@ -43,6 +43,11 @@ Käyttöjärjestelmän asennuksen aikana vastataan useisiin asennuskysymyksiin, 
 * Levyjaon asetukset: Guided
 * Package manager: deb.debian.org
 * Software selection: Otetaan Debian desktop,  GNOME & standard system utilities (tarvittaessa voi lisätä weppipalvelimen ja ssh-palvelimen)
+
+Muutaman latausikkunan jälkeen saadaan ilmoitus "Installation is complet, so it is time to boot into your new system" painetaan continue ja katsotaan miten käy. Kone käynnistyy uudelleen ja kirjautumisikkuna aukee, syötän tunnukset ja pääsin koneelle sisään. 
+<img width="1265" height="881" alt="kuva" src="https://github.com/user-attachments/assets/4429cfd8-4832-4b41-ba34-af979fedeb2b" />
+
+Kuva 3. Debian virtuaalikoneen työpöytä asennuksen jälkeen.
 
 
 ## b) VPS
