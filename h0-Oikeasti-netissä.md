@@ -53,6 +53,8 @@ Kuva 3. Debian virtuaalikoneen työpöytä asennuksen jälkeen.
 
 ## b) VPS
 
+Teron luennolla avattiin eri pilvipalveluntarjoajista ja niiden eroista. Valitsin itse UpCloudin tätä kurssia varten sillä heiltä sai 30 päiväksi 500 euroa krediittejä ja niin sanotun prepaid maksumallin. Lisäsin omat tietoni ja maksutavan verkkosivulle, jonka jälkeen valitsin palvelinkoneen ja siihen käyttöjärjestelmän sekä tekniset tiedot. Tein nämä asiat luennolla 22.10.2026 kun meillä oli siihen sen verran aikaa että sain palvelimen hommattua ja kokeiltua sen toiminnan. Loin myös SSH-avaimet palvelimelle ja kokeilin niiden toiminnan. 
+
 ## c) Alkutoimet
 
 ## d) Weppipalvelin
