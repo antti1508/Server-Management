@@ -44,7 +44,8 @@ Käyttöjärjestelmän asennuksen aikana vastataan useisiin asennuskysymyksiin, 
 * Package manager: deb.debian.org
 * Software selection: Otetaan Debian desktop,  GNOME & standard system utilities (tarvittaessa voi lisätä weppipalvelimen ja ssh-palvelimen)
 
-Muutaman latausikkunan jälkeen saadaan ilmoitus "Installation is complet, so it is time to boot into your new system" painetaan continue ja katsotaan miten käy. Kone käynnistyy uudelleen ja kirjautumisikkuna aukee, syötän tunnukset ja pääsin koneelle sisään. 
+Muutaman latausikkunan jälkeen saadaan ilmoitus "Installation is complet, so it is time to boot into your new system" painetaan continue ja katsotaan miten käy. Kone käynnistyy uudelleen ja kirjautumisikkuna aukee, syötän tunnukset ja pääsin koneelle sisään.
+
 <img width="1265" height="881" alt="kuva" src="https://github.com/user-attachments/assets/4429cfd8-4832-4b41-ba34-af979fedeb2b" />
 
 Kuva 3. Debian virtuaalikoneen työpöytä asennuksen jälkeen.
