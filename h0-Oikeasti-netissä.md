@@ -105,11 +105,13 @@ Lisäsin A-recordin domainille ja laiton siihen palvelimeni IP-osoittee, jossa w
 
 Kuva 8. DNS-asetukset.
 
+Tämän jälkeen kaikki toimi ja verkkosivuun pääsi domain-nimellä.
+
 ## Lähteet 
-https://man.openbsd.org/ssh.1
+Karvinen, T. 2017. First Steps on a New Virtual Private Server – An Example on DigitalOcean. Blogikirjoitus. Luettavissa: https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/. Luettu: 27.10.2026.   
 
-Karvinen, T. 2026. Palvelinten-hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/
+Karvinen, T. 2026a. Palvelinten hallinta. Verkkosivusto / kurssisivu. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 27.10.2026.   
 
-Karvinen, T. 2026. Palvelinten-hallinta. Luento. Haaga-Helia. 22.10.2026
+Karvinen, T. 2026b. Palvelinten hallinta. Luento. Haaga-Helia ammattikorkeakoulu. 22.10.2026.   
 
-https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/
+OpenBSD 2024. SSH(1) – OpenBSD General Commands Manual. Luettavissa: https://man.openbsd.org/ssh.1. Luettu: 27.10.2026.
