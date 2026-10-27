@@ -61,7 +61,15 @@ Kuva 4. UpCloudin palvelimen konfiguraatio
 
 ## c) Alkutoimet
 
-Alkutoimet aloitin lataamalla tulimuurin, avaamalla portin 22 ja laittamalla tulimuurin päälle, käytin komentoja: `sudo apt install ufw`, `sudo ufw allow 22/tcp` & `sudo ufw enable`. Tämän jälkeen loin käyttäjän "antti" ja lisäsen sen sudo ryhmään, käytin komentoa `sudo adduser antti && sudo adduser antti sudo`. Tämän jälkeen kokeilin, että lisätty käyttäjä toimii: `ssh antti@destination` ja lukitsin root-käyttäjän kirjautumisen salasanalla käyttäen komentoa: `sudo usermod --lock root`
+Alkutoimet aloitin lataamalla tulimuurin, avaamalla portin 22 ja laittamalla tulimuurin päälle, käytin komentoja: `sudo apt install ufw`, `sudo ufw allow 22/tcp` & `sudo ufw enable`. Tämän jälkeen loin käyttäjän "antti" ja lisäsen sen sudo ryhmään, käytin komentoa `sudo adduser antti && sudo adduser antti sudo`. 
+
+Seuraavaksi kopioin .ssh kansion käyttäjän antti .ssh hakemistoon ja lisäsin käyttäjälle oikeudet, käytin komentoja: `sudo cp -R .ssh /home/antti/.ssh`, `chmod 700 /home/antti/.ssh`, `chmod 600 /home/antti/.ssh/authorized_keys` & `chwon -R antti:antti /home/antti/.ssh` 
+
+Tämän jälkeen kokeilin, että lisätty käyttäjä toimii: `ssh antti@destination` ja lukitsin root-käyttäjän kirjautumisen salasanalla käyttäen komentoa: `sudo usermod --lock root` sekä disabloin ssh-kirjautumisen root käyttäjältä.
+
+<img width="955" height="766" alt="kuva" src="https://github.com/user-attachments/assets/6d45b2f5-8ce8-4132-aae9-0873acd0805d" />
+
+Kuva 5. Disabloitu ssh-kirjautuminen käyttäjältä root.
 
 ## d) Weppipalvelin
 
