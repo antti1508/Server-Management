@@ -93,6 +93,12 @@ Kuva 6. Apachen oletussivu.
 
 ## e) Vapaaehtoinen: Nimi
 
+Ostin domainin Namecheap-palvelun kautta, koska tarkoituksena on tehdä tämä sivu vielä harjoituksena niin ostin halvimman domainin joka oli saatavilla. Hintaa domainille tuli lopuksi 1.38€ / ensimmäinen vuosi.
+
+<img width="1070" height="801" alt="kuva" src="https://github.com/user-attachments/assets/2b58ad72-0969-4aa3-ba60-2b6abd890dc8" />
+
+Kuva 7. Namecheap ostoskori.
+
 ## Lähteet 
 https://man.openbsd.org/ssh.1
 
