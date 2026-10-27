@@ -99,6 +99,12 @@ Ostin domainin Namecheap-palvelun kautta, koska tarkoituksena on tehdä tämä s
 
 Kuva 7. Namecheap ostoskori.
 
+Lisäsin A-recordin domainille ja laiton siihen palvelimeni IP-osoittee, jossa weppipalvelin on.
+
+<img width="1129" height="384" alt="kuva" src="https://github.com/user-attachments/assets/fd0949e5-6dbd-4690-9c9b-53e251868469" />
+
+Kuva 8. DNS-asetukset.
+
 ## Lähteet 
 https://man.openbsd.org/ssh.1
 
