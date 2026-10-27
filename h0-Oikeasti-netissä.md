@@ -71,7 +71,25 @@ Tämän jälkeen kokeilin, että lisätty käyttäjä toimii: `ssh antti@destina
 
 Kuva 5. Disabloitu ssh-kirjautuminen käyttäjältä root.
 
+Jotta asetus tulee voimaan käynnistetään ssh-palvelu vielä uudelleen komennolla: `sudo service ssh restart`
+
 ## d) Weppipalvelin
+
+Valitsin weppipalvelimeksini Apachen, asensin Apachen komennolla `sudo apt install apache2`. 
+
+Ensimmäisellä yrityksellä sain virheilmoituksen "Error: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?", joten ajetaan komento `sudo apt update && sudo apt upgrade` ja kokeillaan uudelleen. 
+
+Ajetaan nyt komento `sudo apt install apache2` -> onnistui.
+
+Avataan weppisivua varten portti tulimuurista komennolla: `sudo ufw allow 80/tcp`
+
+Tarkistetaan Apache:n versio komennolla: `apachectl -v`
+
+Kokeillaan selaimella apachen toimivuus:
+
+<img width="1268" height="976" alt="kuva" src="https://github.com/user-attachments/assets/d96781b6-8691-4a9c-bca2-f242769d6ceb" />
+
+Kuva 6. Apachen oletussivu.
 
 ## e) Vapaaehtoinen: Nimi
 
@@ -81,3 +99,5 @@ https://man.openbsd.org/ssh.1
 Karvinen, T. 2026. Palvelinten-hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/
 
 Karvinen, T. 2026. Palvelinten-hallinta. Luento. Haaga-Helia. 22.10.2026
+
+https://terokarvinen.com/2017/first-steps-on-a-new-virtual-private-server-an-example-on-digitalocean/
