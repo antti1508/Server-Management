@@ -63,7 +63,7 @@ Kuva 4. UpCloudin palvelimen konfiguraatio
 
 Alkutoimet aloitin lataamalla tulimuurin, avaamalla portin 22 ja laittamalla tulimuurin päälle, käytin komentoja: `sudo apt install ufw`, `sudo ufw allow 22/tcp` & `sudo ufw enable`. Tämän jälkeen loin käyttäjän "antti" ja lisäsen sen sudo ryhmään, käytin komentoa `sudo adduser antti && sudo adduser antti sudo`. 
 
-Seuraavaksi kopioin .ssh kansion käyttäjän antti .ssh hakemistoon ja lisäsin käyttäjälle oikeudet, käytin komentoja: `sudo cp -R .ssh /home/antti/.ssh`, `chmod 700 /home/antti/.ssh`, `chmod 600 /home/antti/.ssh/authorized_keys` & `chwon -R antti:antti /home/antti/.ssh` 
+Seuraavaksi kopioin .ssh kansion käyttäjän antti .ssh hakemistoon ja lisäsin käyttäjälle oikeudet, käytin komentoja: `sudo cp -R .ssh /home/antti/.ssh`, `chmod 700 /home/antti/.ssh`, `chmod 600 /home/antti/.ssh/authorized_keys` & `chown -R antti:antti /home/antti/.ssh` 
 
 Tämän jälkeen kokeilin, että lisätty käyttäjä toimii: `ssh antti@destination` ja lukitsin root-käyttäjän kirjautumisen salasanalla käyttäen komentoa: `sudo usermod --lock root` sekä disabloin ssh-kirjautumisen root käyttäjältä.
 
