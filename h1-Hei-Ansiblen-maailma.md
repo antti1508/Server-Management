@@ -24,6 +24,8 @@ Linkki Debian 13 asennukseeni (h0): https://github.com/antti1508/Server-Manageme
 
 # b) Sshecrets
 
+Aloitetaan tässä kohtaa harjoitukset käynnistämällä Debian 13 virtuaalikone. Koneen käynnistyttä ajoin komennot ```sudo apt update && sudo apt upgrade``` tämän jälkeen asensin SSH:n komennolla ```sudo apt install ssh -y```. Asennuksen jälkeen sain ilmoituksen onnistuneesta asennuksesta:
+
 # c) Pubkey
 
 # d) Hei Ansible.
