@@ -60,7 +60,12 @@ Kuva 5. Testattu SSH-kirjautuminen ilman salasanaa.
 
 Aloitetaan tehtävä asentamalla Ansible. Ajetaan komento ```sudo apt update && sudo apt install ansible -y```. Tämän jälkeen tarkistetaan, että asennus onnistui komennolla ```ansible --version```.
 
-Seuraavaksi loin kansion nimeltä ansible komennolla: ```mkdir ansible```, jonka jälkeen lisäsin kansion sisällä hosts.ini tiedoston, käytin tässä tekstieditorina nanoa ja komentoa ```nano hosts.ini```. Hosts.ini-tiedoston luotuani lisäsin tiedostoon ainoan koneeni "localhost" ja tulostin hosts.ini tiedoston sisällön komennolla ```cat hosts.ini``` (Karvinen, T. 2026a), alla käyttämäni komennot :
+Seuraavaksi loin kansion nimeltä ansible komennolla: ```mkdir ansible```, jonka jälkeen lisäsin kansion sisällä hosts.ini tiedoston, käytin tässä tekstieditorina nanoa ja komentoa ```nano hosts.ini```. Hosts.ini-tiedoston luotuani lisäsin tiedostoon ainoan koneeni "localhost" ja tulostin hosts.ini tiedoston sisällön komennolla ```cat hosts.ini```, tämän jälkeen poistetaan vielä python-höpötys lisäämällä seuraavanlainen pätkä hosts.ini-tiedostoon (Karvinen, T. 2026a):
+```bash
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+Alla vielä käyttämäni komennot :
 
 <img width="208" height="74" alt="kuva" src="https://github.com/user-attachments/assets/97016ee5-8dbd-4ff8-8db6-dc853eb56840" />
 
@@ -68,7 +73,7 @@ Kuva 6. Käytetyt komennot kansion ja hosts.ini-tiedoston luontiin.
 
 Seuraavaksi kokeilin ansiblen ja hosts.ini tiedoston toimivuutta komennolla ```ansible all -a 'uptime' -i hosts.ini```: 
 
-<img width="1274" height="143" alt="kuva" src="https://github.com/user-attachments/assets/1f23f330-83b3-4541-8d31-92c898d36478" />
+<img width="1283" height="201" alt="kuva" src="https://github.com/user-attachments/assets/accf3022-a924-47a6-ab86-5f767786c613" />
 
 Kuva 7. Ansiblen testikomennon tulos.
 
