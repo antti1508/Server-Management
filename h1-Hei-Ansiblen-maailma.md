@@ -114,6 +114,18 @@ inventory = hosts.ini
     content: "Hei Ansiblen maailma"
 ```
 
+Seuraavaksi kokeillaan ansiblen toimivuutta komennolla ```ansible-playbook site.yml```, komennon jälkeen ansible väittää tehneensä muutoksia, mutta tarkistetaan asia vielä. Alla kuva edellisen komennon tuloksesta: 
+
+<img width="1168" height="359" alt="kuva" src="https://github.com/user-attachments/assets/b7ab339c-d0a1-45cb-8f05-bea62babcc72" />
+
+Kuva 9. Ansible-playbookin tuloste.
+
+Seuraavaksi tarkistetaan onko muutokset tehty localhostille. Tarkistetaan localhostin tmp kansio ja muutokset näyttäisi menneen läpi, alla kuva:
+
+<img width="1274" height="561" alt="kuva" src="https://github.com/user-attachments/assets/6a02c9b0-977f-43fb-8439-f091cc921c2a" />
+
+Kuva 10. Kokonaisuuden tulos.
+
 # e) Vapaaehtoinen bonus
 
 ## Lähteet
