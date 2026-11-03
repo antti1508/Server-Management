@@ -83,6 +83,8 @@ Seuraavaksi luodaan ansiblelle pakollinen kansiorakenne ja ansible.cfg, site.yml
 
 Kuva 8. Hakemistopuu.
 
+Seuraavaksi aloitin komentojen lisäämisen tiedostoihin, tässä kohdassa seurasin Teron ohjeita artikkelista: https://terokarvinen.com/hello-ansible/
+
 ## Tiedostojen sisällöt ovat nyt seuraavanlaiset:
 
 ## hosts.ini
