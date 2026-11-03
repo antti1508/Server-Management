@@ -88,20 +88,20 @@ Seuraavaksi aloitin komentojen lisäämisen tiedostoihin, tässä kohdassa seura
 ## Tiedostojen sisällöt ovat nyt seuraavanlaiset:
 
 ## hosts.ini
-```bash
+```yaml
 localhost
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
 ```
 
 ## ansible.cfg
-```bash
+```yaml
 [defaults]
 inventory = hosts.ini
 ```
 
 ## site.yml
-```bash
+```yaml
 - hosts: all
   roles:
     - hello
