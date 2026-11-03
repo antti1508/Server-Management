@@ -108,7 +108,7 @@ inventory = hosts.ini
 ```
 
 ## ~/ansible/roles/hello/tasks/main.yml
-```bash
+```yaml
 - copy:
     dest: /tmp/hello-ansible
     content: "Hei Ansiblen maailma"
