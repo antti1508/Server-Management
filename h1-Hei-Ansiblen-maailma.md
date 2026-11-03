@@ -79,9 +79,34 @@ Kuva 7. Ansiblen testikomennon tulos.
 
 Seuraavaksi luodaan ansiblelle pakollinen kansiorakenne ja ansible.cfg, site.yml & main.yml tiedostot. Kansioiden luomiseen käytin komentoa ```mkdir -p roles/hello/tasks/``` (Karvinen, T. 2026a). Alempana kuva hakemistopuusta:
 
-<img width="481" height="313" alt="kuva" src="https://github.com/user-attachments/assets/20b09b3e-3683-4f37-9f75-babb76852e85" />
+<img width="395" height="323" alt="kuva" src="https://github.com/user-attachments/assets/7276b7a0-2591-4c4e-b1ea-7a1b9b994666" />
 
 Kuva 8. Hakemistopuu.
+
+## Tiedostojen sisällöt ovat nyt seuraavanlaiset:
+
+## hosts.ini
+```bash
+localhost
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+
+## ansible.cfg
+```bash
+[defaults]
+inventory = hosts.ini
+```
+
+## site.yml
+```bash
+
+```
+
+## ~/ansible/roles/hello/tasks/main.yml
+```bash
+
+```
 
 # e) Vapaaehtoinen bonus
 
