@@ -28,7 +28,19 @@ Aloitetaan tässä kohtaa harjoitukset käynnistämällä Debian 13 virtuaalikon
 
 <img width="1071" height="347" alt="kuva" src="https://github.com/user-attachments/assets/90597379-2b7c-4666-8fb2-35e06c3fe8e6" />
 
-Kuva 1. SSH:n asennus
+Kuva 1. SSH:n asennus.
+
+Seuraavaksi laitoin SSH demonin päälle komennolla ```sudo systemctl enable --now ssh```, tämän jälkeen käynnistin virtuaalikoneen uudelleen ja tarkistin SSH-demonin statuksen komennolla ```sudo systemctl status ssh```:
+
+<img width="1285" height="613" alt="kuva" src="https://github.com/user-attachments/assets/8ed8b353-540d-45af-8788-3183a0caf133" />
+
+Kuva 2. SSH-demonin statuksen tarkastaminen.
+
+Sitten on aika kokeilla SSH:n toimivuus lokaalisti, ensin vain salasanalla. Käytin tähän testiin komentoa ```ssh s200963@localhost```, alempana kuva testituloksesta:
+
+<img width="1271" height="794" alt="kuva" src="https://github.com/user-attachments/assets/5ba0ab60-e1e0-4124-bec5-64d7e54657c5" />
+
+Kuva 3. SSH:n toimivuus testattu lokaalisti.
 
 # c) Pubkey
 
