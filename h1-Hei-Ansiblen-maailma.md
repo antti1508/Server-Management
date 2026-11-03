@@ -100,12 +100,16 @@ inventory = hosts.ini
 
 ## site.yml
 ```bash
-
+- hosts: all
+  roles:
+    - hello
 ```
 
 ## ~/ansible/roles/hello/tasks/main.yml
 ```bash
-
+- copy:
+    dest: /tmp/hello-ansible
+    content: "Hei Ansiblen maailma"
 ```
 
 # e) Vapaaehtoinen bonus
