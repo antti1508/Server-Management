@@ -30,7 +30,7 @@ Aloitetaan tässä kohtaa harjoitukset käynnistämällä Debian 13 virtuaalikon
 
 Kuva 1. SSH:n asennus.
 
-Seuraavaksi laitoin SSH demonin päälle komennolla ```sudo systemctl enable --now ssh```, tämän jälkeen käynnistin virtuaalikoneen uudelleen ja tarkistin SSH-demonin statuksen komennolla ```sudo systemctl status ssh```:
+Seuraavaksi laitoin SSH demonin päälle komennolla ```sudo systemctl enable --now ssh```, tämän jälkeen käynnistin virtuaalikoneen uudelleen ja tarkistin SSH-demonin statuksen komennolla ```sudo systemctl status ssh``` (Karvinen, T. 2026d) :
 
 <img width="1285" height="613" alt="kuva" src="https://github.com/user-attachments/assets/8ed8b353-540d-45af-8788-3183a0caf133" />
 
@@ -44,10 +44,41 @@ Kuva 3. SSH:n toimivuus testattu lokaalisti.
 
 # c) Pubkey
 
+Tämä vaihe aloitetaan ssh-avaimien luomisella. Käytin komentoa ```ssh-keygen``` luodakseni uudet SSH-avaimet Debian virtuaalikoneelleni. Seuraavaksi kopion julisen avaimen lokaalille clientille, jolle pääsen jo kirjautumaan salasanalla. Käytin avaimen kopiointiin komentoa ```ssh-copy-id localhost``` (Karvinen, T. 2026d), tämän jälkeen pääte kysyi viimeisen kerran salasanaa osoitteeseen s200963@localhost. Salasanan syöttämisen jälkeen sain ilmoituksen, jossa kerrottiin että julkinen avain on lisätty kohteesta "/home/s200963/.ssh/id_ed25519.pub/" localhostiin. Pääte vielä kehottaa kokeilemaan kirjautumista, jotta nähdään että avain toimii oikein: 
+
+<img width="1281" height="787" alt="kuva" src="https://github.com/user-attachments/assets/45bd6721-35b6-47da-891a-715eba23cb4c" />
+
+Kuva 4. Ilmoitus avainten kopioinnista.
+
+Seuraavaksi kokeillaan kirjautuminen localhostille ilman salasanaa komennolla ```ssh s200963@localhost```, jonka jälkeen voidaan todeta että kaikki näyttäisi toimivan. Alla kuva tuloksesta:
+
+<img width="1261" height="776" alt="kuva" src="https://github.com/user-attachments/assets/ed050f0e-6bf1-475f-a161-efff14094d8b" />
+
+Kuva 5. Testattu SSH-kirjautuminen ilman salasanaa.
+
 # d) Hei Ansible.
+
+Aloitetaan tehtävä asentamalla Ansible. Ajetaan komento ```sudo apt update && sudo apt install ansible -y```. Tämän jälkeen tarkistetaan, että asennus onnistui komennolla ```ansible --version```.
+
+Seuraavaksi loin kansion nimeltä ansible komennolla: ```mkdir ansible```, jonka jälkeen lisäsin kansion sisällä hosts.ini tiedoston, käytin tässä tekstieditorina nanoa ja komentoa ```nano hosts.ini```. Hosts.ini-tiedoston luotuani lisäsin tiedostoon ainoan koneeni "localhost" ja tulostin hosts.ini tiedoston sisällön komennolla ```cat hosts.ini``` (Karvinen, T. 2026a), alla käyttämäni komennot :
+
+<img width="208" height="74" alt="kuva" src="https://github.com/user-attachments/assets/97016ee5-8dbd-4ff8-8db6-dc853eb56840" />
+
+Kuva 6. Käytetyt komennot kansion ja hosts.ini-tiedoston luontiin.
+
+Seuraavaksi kokeilin ansiblen ja hosts.ini tiedoston toimivuutta komennolla ```ansible all -a 'uptime' -i hosts.ini```: 
+
+<img width="1274" height="143" alt="kuva" src="https://github.com/user-attachments/assets/1f23f330-83b3-4541-8d31-92c898d36478" />
+
+Kuva 7. Ansiblen testikomennon tulos.
 
 # e) Vapaaehtoinen bonus
 
 ## Lähteet
-Karvinen, T. Palvelinten hallinta https://terokarvinen.com/palvelinten-hallinta/
-https://terokarvinen.com/ssh-public-key-login-without-password/
+Karvinen, T. 2026a. Hello Ansible. Luettu 3.11.2026. https://terokarvinen.com/hello-ansible/
+
+Karvinen, T. 2026b. Palvelinten hallinta. Luento 29.10.2026. Haaga-Helia ammattikorkeakoulu.
+
+Karvinen, T. 2026c. Palvelinten hallinta. Kurssisivusto. Luettu 2.11.2026. https://terokarvinen.com/palvelinten-hallinta/
+
+Karvinen, T. 2026d. SSH Public Key Login without Password. Luettu 2.11.2026. https://terokarvinen.com/ssh-public-key-login-without-password/
