@@ -126,8 +126,6 @@ Seuraavaksi tarkistetaan onko muutokset tehty localhostille. Tarkistetaan localh
 
 Kuva 10. Kokonaisuuden tulos.
 
-# e) Vapaaehtoinen bonus
-
 ## Lähteet
 Karvinen, T. 2026a. Hello Ansible. Luettu 3.11.2026. https://terokarvinen.com/hello-ansible/
 
