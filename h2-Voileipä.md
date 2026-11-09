@@ -108,12 +108,12 @@ Esimerkki:
 ## e) Jotain muuta
 
 ### Lähteet:
-https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html
+Ansible s.a. Index of all Modules in the Ansible.builtin Collection. Luettavissa: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html. Luettu 9.11.2026.
 
-Karvinen, T 2026 palvelinten hallinta. https://terokarvinen.com/palvelinten-hallinta/ Luettu 9.11.2026
+Karvinen, T. 2026a. Palvelinten hallinta. Luento 5.11.2026. Haaga-Helia ammattikorkeakoulu.
 
-Karvinen, T 2026 Sudo without password. https://terokarvinen.com/passwordless-sudo/ Luettu 9.11.2026
+Karvinen, T. 2026b. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu 9.11.2026.
 
-Karvinen, T 2026 Passwordless Sudo with Ansible. https://terokarvinen.com/passwordless-sudo-with-ansible/ Luettu 9.11.202
+Karvinen, T. 2026c. Passwordless Sudo with Ansible. Luettavissa: https://terokarvinen.com/passwordless-sudo-with-ansible/. Luettu 9.11.2026.
 
-Karvinen, T. 2026b. Palvelinten hallinta. Luento 5.11.2026. Haaga-Helia ammattikorkeakoulu.
+Karvinen, T. 2026d. Sudo without password. Luettavissa: https://terokarvinen.com/passwordless-sudo/. Luettu 9.11.2026.
