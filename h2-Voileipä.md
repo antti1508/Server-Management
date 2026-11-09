@@ -108,6 +108,8 @@ Esimerkki:
 ## e) Jotain muuta
 
 ### Lähteet:
+https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html
+
 Karvinen, T 2026 palvelinten hallinta. https://terokarvinen.com/palvelinten-hallinta/ Luettu 9.11.2026
 
 Karvinen, T 2026 Sudo without password. https://terokarvinen.com/passwordless-sudo/ Luettu 9.11.2026
