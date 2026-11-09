@@ -24,20 +24,49 @@
 
 ## Tiivistelmä: Ansiblen sisäänrakennettu dokumentaatio (https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html)
 
-ansible-doc copy:
+**ansible-doc copy:**
 
 Kopioi tiedoston paikalliselta hallintakoneelta tai etäkoneelta toiseen hakemistoon etäkoneella. Tiedostojen noutamiseen etäkoneelta paikalliskoneelle käytetään vastaavasti fetch-moduulia.
 
 Esimerkki:
 
 ```yaml
-- name: Kopioi tiedosto ja aseta oikeudet
+- name: Copy file with owner and permissions
   ansible.builtin.copy:
     src: /srv/myfiles/foo.conf
     dest: /etc/foo.conf
     owner: foo
     group: foo
     mode: '0644'
+```
+
+**ansible-doc apt:**
+
+Asentaa, päivittää ja poistaa ohjelmistopaketteja Debian- ja Ubuntu-pohjaisilla koneilla.
+
+Esimerkki: 
+
+```yaml
+- name: Install apache httpd (state=present is optional)
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+```
+
+**ansible-doc user:**
+
+Luo, muokkaa ja poistaa paikallisia käyttäjätilejä ja niiden ryhmäjäsenyyksiä.
+
+Esimerkki:
+
+
+```yaml
+- name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+  ansible.builtin.user:
+    name: james
+    shell: /bin/bash
+    groups: admins,developers
+    append: yes
 ```
 
 # a) Sudoless
