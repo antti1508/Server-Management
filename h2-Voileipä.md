@@ -53,6 +53,20 @@ Esimerkki:
     state: present
 ```
 
+**ansible-doc file:**
+
+Luo kansioita, tiedostoja ja linkkejä sekä säätää niiden oikeuksia (ei koske tiedostojen sisältöön).
+
+Esimerkki:
+
+```yaml
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /etc/some_directory
+    state: directory
+    mode: '0755'
+```
+
 **ansible-doc user:**
 
 Luo, muokkaa ja poistaa paikallisia käyttäjätilejä ja niiden ryhmäjäsenyyksiä.
@@ -67,6 +81,20 @@ Esimerkki:
     shell: /bin/bash
     groups: admins,developers
     append: yes
+```
+
+**ansible-doc authorized_key:**
+
+Lisää tai poistaa käyttäjän SSH-julkisia avaimia ~/.ssh/authorized_keys -tiedostosta salasanatonta kirjautumista varten. 
+
+Esimerkki:
+
+```yaml
+- name: Set authorized key taken from file
+  ansible.builtin.authorized_key:
+    user: charlie
+    state: present
+    key: "{{ lookup('file', '/home/charlie/.ssh/id_rsa.pub') }}"
 ```
 
 ## a) Sudoless
