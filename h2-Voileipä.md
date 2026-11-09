@@ -99,6 +99,16 @@ Esimerkki:
 
 ## a) Sudoless
 
+Aloitin tehtävän käynnistämällä Debian 13 virtuaalikoneeni, jossa ansible onkin asennettu jo aikaisemmista tehtävistä. Tässä kohdassa oli tarkoituksena luoda käyttäjä ja lisätä se sudoless ryhmään, käytin tässä Teron antamia komentoja:
+
+```console
+sudo adduser anantti
+sudo groupadd sudoless
+sudo adduser anantti sudoless
+```
+(Karvinen. 2026d)
+
+
 ## b) Antero
 
 ## c) Package
