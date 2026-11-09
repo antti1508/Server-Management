@@ -79,7 +79,7 @@ Esimerkki:
 
 ## e) Jotain muuta
 
-### Lähteet
+### Lähteet:
 Karvinen, T 2026 palvelinten hallinta. https://terokarvinen.com/palvelinten-hallinta/ Luettu 9.11.2026
 
 Karvinen, T 2026 Sudo without password. https://terokarvinen.com/passwordless-sudo/ Luettu 9.11.2026
