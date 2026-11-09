@@ -108,6 +108,15 @@ sudo adduser anantti sudoless
 ```
 (Karvinen. 2026d)
 
+Tämän jälkeen avasin uuden terminaali-ikkunan jossa pidin root sessiota auki komennolla ```sudo -i``` sen aikaa kun muutellaan sudoers.d kansiossa sudoless tiedostoa.
+
+Sitten ajoin komennon ```sudo visudo /etc/sudoers.d/sudoless``` ja lisäsin tiedostoon onelinerin: %sudoless ALL = (ALL) NOPASSWD: ALL.
+
+Sitten olikin testien aika, vaihdoin käyttäjän ananttiin ja join komennot ```sudo -k``` (sudo -k mitätöi käyttäjän välimuistiin tallennetut pääsyoikeudet) & ```sudo echo "Sudon testaus"```. (Karvinen. 2026d) Alla kuva terminaalista: 
+
+<img width="771" height="135" alt="kuva" src="https://github.com/user-attachments/assets/268da94f-60af-4770-9e52-c58e0054e09a" />
+
+Kuva 1. Sudon testaus.
 
 ## b) Antero
 
