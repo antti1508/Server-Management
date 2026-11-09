@@ -42,7 +42,7 @@ Esimerkki:
 
 **ansible-doc apt:**
 
-Asentaa, päivittää ja poistaa ohjelmistopaketteja Debian- ja Ubuntu-pohjaisilla koneilla.
+Asentaa, päivittää ja poistaa ohjelmistopaketteja esimerkiksi Debian- ja Ubuntu-pohjaisilla koneilla
 
 Esimerkki: 
 
