@@ -140,6 +140,7 @@ Seuraavaksi on aika kokeilla salasanatonta sudo-käyttäjää automaattisesti an
     group: "root"
     mode: "0644"
 ```
+(Karvinen. 2026c)
 
 Tämän jälkeen lisäsin site.yml tiedostoon become: true:n jotta ansiblea ajetaan sudona, sekä lisäsin rooleihin anantti:n jotta ansible ajaa myös sen taskit:
 
