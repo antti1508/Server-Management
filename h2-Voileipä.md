@@ -120,7 +120,7 @@ Kuva 1. Sudon testaus.
 
 ## b) Antero
 
-Seuraavaksi on aika kokeilla salasanatonta sudo-käyttäjää automaattisesti ansiblella. Aloitin tämän vaiheen luomalla kansiorakenteeseni uuden kansion anantti roles osion alle, jonka jälkeen loin tasks osion ja main.yml tiedoston. Muokkasin main.yml tiedoston Teron ohjeiden mukaisesti seuraavanlaiseksi:
+Seuraavaksi oli aika kokeilla salasanatonta sudo-käyttäjää automaattisesti Ansiblella. Aloitin tämän vaiheen luomalla kansiorakenteeseen uuden kansion anantti roles-osion alle. Tämän jälkeen loin tasks-hakemiston ja sinne ```main.yml```-tiedoston. Muokkasin ```main.yml```-tiedoston Teron ohjeiden mukaisesti seuraavanlaiseksi:
 
 ```yaml
 - group:
@@ -142,7 +142,7 @@ Seuraavaksi on aika kokeilla salasanatonta sudo-käyttäjää automaattisesti an
 ```
 (Karvinen. 2026c)
 
-Tämän jälkeen lisäsin site.yml tiedostoon become: true:n jotta ansiblea ajetaan sudona, sekä lisäsin rooleihin anantti:n jotta ansible ajaa myös sen taskit:
+Tämän jälkeen lisäsin ```site.yml``` tiedostoon become: true:n jotta ansiblea ajetaan sudona, sekä lisäsin rooleihin anantti:n jotta ansible ajaa myös sen taskit:
 
 ```yaml
 - hosts: all
@@ -174,7 +174,7 @@ Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo-käyttäjällä.
 
 ## c) Package
 
-Seuraavaksi minun pitäisi asentaa 2 ohjelmaa ansiblella, aloitin luomalla uuden roolin ja taskin, sekä main.yml tiedoston. Tässä kohdassa käytin tiivistelmääni kohdasta ansible-doc apt apuna **(HUOM task tulee lisätä site.yml tiedostoon)**. Main.yml tiedostosta tuli seuraavanlaien:
+Seuraavaksi minun pitäisi asentaa 2 ohjelmaa ansiblella, aloitin luomalla uuden roolin ja taskin, sekä main.yml tiedoston. Tässä kohdassa käytin tiivistelmääni kohdasta ansible-doc apt apuna **(HUOM task tulee lisätä ```site.yml``` tiedostoon)**. ```Main.yml``` tiedostosta tuli seuraavanlaien:
 
 ```yaml
 - name: "kahden paketin asennus"
@@ -206,7 +206,7 @@ Kuva 6. curl ja tree komennot.
 
 ## d) File
 
-Tässä tehtävässä oli tarkoitus luoda monirivinen tiedosto. Aloitin tehtävän luomalla uuden roolin ja tein sille tasks kansion ja main.yml tiedoston **(HUOM task tulee taas lisätä site.yml tiedostoon)**. Tässä taas main.yml sisältöineen:
+Tässä tehtävässä oli tarkoitus luoda monirivinen tiedosto. Aloitin tehtävän luomalla uuden roolin ja tein sille tasks kansion ja ```main.yml``` tiedoston **(HUOM task tulee taas lisätä site.yml tiedostoon)**. Tässä taas ```main.yml``` sisältöineen:
 
 ```yaml
 - name "Luodaan monirivinen tiedosto"
@@ -232,7 +232,7 @@ Ajetaan ansible-playbook ja katsotaan mitä tapahtuu. Saatiin taas muutos, kuva 
 
 Kuva 7. Ansiblen tulos.
 
-Tämän jälkeen tarkastetaan toimiiko tiedosto ja oikeudet, käytin ensin komentoa cat /etc/secret.txt käyttäjällä s200963 jolloin saatiin vastaus:
+Tämän jälkeen tarkastetaan toimiiko tiedosto ja oikeudet, käytin ensin komentoa ```cat /etc/secret.txt``` käyttäjällä s200963 jolloin saatiin vastaus:
 
 <img width="634" height="79" alt="kuva" src="https://github.com/user-attachments/assets/bc856cd4-7751-4ce8-a93c-b1c02f4713df" />
 
@@ -247,6 +247,55 @@ Kuva 9. Oikeudet toimii
 Kaikki näyttäisi toimivan juuri kuten pitääkin.
 
 ## e) Jotain muuta
+
+Päätin tässä kohdassa toteuttaa Ansiblella tauon (pause) ja varmistaa käyttäjältä, haluaako tämä asentaa Curl- ja Tree-ohjelmat. Loin uuden roolin ja sille tasks-kansion sekä ```main.yml```-tiedoston. Lisäsin luodun roolin myös ```site.yml```-tiedostoon. Tiedosto ```roles/varmistus/tasks/main.yml``` näytti tältä:
+
+```yaml
+- name: "Varmistus ohjelmien asennuksesta"
+  pause:
+    prompt: "Haluatko varmasti asentaa Curl & Tree ohjelmat? Paina enter jatkaaksesi tai Ctrl+C peruaksesi"
+```
+
+Seuraavaksi ajetaan taas ansible ja katsotaan kysyykö se asennusta ennen halutaanko jatkaa. Alla kuva ansible-playbookin tulosteesta:
+
+<img width="1896" height="864" alt="kuva" src="https://github.com/user-attachments/assets/aaf884fb-f032-47f7-bcce-77764364e570" />
+
+Kuva 10. Asennuksen varmistus.
+
+Kokeillaan vielä painaa Ctrl+C ennen asennusta ja varmistetaan että asennus keskeytyy:
+
+<img width="1574" height="848" alt="kuva" src="https://github.com/user-attachments/assets/6073ad03-6237-485f-b0c4-c2ed19735d83" />
+
+Kuva 11. Ansible playbook keskeytetty.
+
+Asennus keskeytyi, mutta tulosteeseen jäi punainen virheilmoitus, mikä ei näyttänyt siistiltä. Aloin selvittää parempaa toteutustapaa ja huomasin, että vahvistuskyselyn voi toteuttaa lukemalla käyttäjän syötteen (register) ja lopettamalla suorituksen tarvittaessa hallitusti Ansiblen meta-moduulilla (Ansible s.a.). Muokkasin varmistustehtävää siten, että se kysyy erikseen lupaa asennukselle.
+
+Muokkasin tiedoston ```roles/varmistus/tasks/main.yml``` seuraavanlaiseksi:
+
+```yaml
+- name: Pyydä vahvistus käyttäjältä
+  pause:
+    prompt: "Kirjoita 'y' jatkaaksesi asennusta, tai paina vain Enter peruaksesi"
+  register: kayttajan_valinta
+
+- name: Lopeta pelikirjan ajo siististi ilman virhettä
+  meta: end_play
+  when: kayttajan_valinta.user_input | lower != 'y'
+```
+
+Nyt playbookin lopetus on siisti, eikä virheilmoitusta tule näkyviin:
+
+<img width="1895" height="628" alt="kuva" src="https://github.com/user-attachments/assets/74320e0c-5395-4352-8bad-92886db894cc" />
+
+Kuva 12. Siisti lopetus.
+
+Kokeillaan vielä että playbook ajaa läpi jos valitsee 'y':
+
+<img width="1898" height="788" alt="kuva" src="https://github.com/user-attachments/assets/7dec7d6d-d1b0-4152-8f86-cb5458a921c7" />
+
+Kuva 13. Playbookin ajo loppuun.
+
+Kaikki näyttäisi toimivan nyt oikein ja ilman virheitä.
 
 ### Lähteet:
 Ansible s.a. Index of all Modules in the Ansible.builtin Collection. Luettavissa: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/index.html. Luettu 9.11.2026.
