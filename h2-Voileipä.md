@@ -205,6 +205,26 @@ Kuva 6. curl ja tree komennot.
 
 ## d) File
 
+Tässä tehtävässä oli tarkoitus luoda monirivinen tiedosto. Aloitin tehtävän luomalla uuden roolin ja tein sille tasks kansion ja main.yml tiedoston **(HUOM task tulee taas lisätä site.yml tiedostoon)**. Tässä taas main.yml sisältöineen:
+
+```yaml
+- name "Luodaan monirivinen tiedosto"
+  copy:
+  dest: /ect/secret.txt
+  content: |
+    Tämä on ansiblella
+    luoto monirivinen
+    tiedosto secret.txt
+  owner: anantti
+  group: sudoless
+  mode: "0640"
+```
+
+Oikeudet 0640 symbolisessa muodossa ovat -rw-r----- (4 = luku, 2 = kirjoitus, 0 = ei oikeutta).
+* Omistaja (anantti / rw-): Saa lukea ja muokata tiedostoa.
+* Ryhmä (sudoless / r--): Saa vain lukea tiedoston.
+* Muut (others / ---): Eivät pääse tiedostoon lainkaan käsiksi.
+
 ## e) Jotain muuta
 
 ### Lähteet:
