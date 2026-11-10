@@ -120,6 +120,49 @@ Kuva 1. Sudon testaus.
 
 ## b) Antero
 
+Seuraavaksi on aika kokeilla salasanatonta sudo-käyttäjää automaattisesti ansiblella. Aloitin tämän vaiheen luomalla kansiorakenteeseni uuden kansion anantti roles osion alle, jonka jälkeen loin tasks osion ja main.yml tiedoston. Muokkasin main.yml tiedoston Teron ohjeiden mukaisesti seuraavanlaiseksi:
+
+```yaml
+- group:
+    name: "sudoless"
+    state: present
+- user:
+    name: "anantti"
+    state: present
+    groups: ["sudoless", "sudo", "adm"]
+- authorized_key:
+    user: "anantti"
+    key: "oma ssh-avain"
+- copy:
+    dest: "/etc/sudoers.d/sudoless"
+    content: "%sudoless ALL = (ALL) NOPASSWD: ALL\n"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+```
+
+Tämän jälkeen lisäsin site.yml tiedostoon become: true:n jotta ansiblea ajetaan sudona, sekä lisäsin rooleihin anantti:n jotta ansible ajaa myös sen taskit:
+
+```yaml
+- hosts: all
+  become: true
+  roles:
+    - hello
+    - anantti
+```
+
+Sitten olikin aika ajaa ansible ensimmäisen kerran jotta salasanaton sudo käyttäjä luodaan:
+
+<img width="1728" height="670" alt="kuva" src="https://github.com/user-attachments/assets/59dc33b2-8c8c-45ef-a64d-22885a37df40" />
+
+Kuva 2. Ensimmäinen ajo ansiblella
+
+Toista ajoa varten korvataan localhost hosts.ini tiedostoon tekstillä anantti@localhost ja ajetaan ansible ilman -K parametriä.
+
+<img width="1897" height="658" alt="kuva" src="https://github.com/user-attachments/assets/2a39245f-14a5-438b-a2eb-917f8742695d" />
+
+Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo käyttäjällä.
+
 ## c) Package
 
 ## d) File
