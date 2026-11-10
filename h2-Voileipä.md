@@ -173,6 +173,36 @@ Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo-käyttäjällä.
 
 ## c) Package
 
+Seuraavaksi minun pitäisi asentaa 2 ohjelmaa ansiblella, aloitin luomalla uuden roolin ja taskin, sekä main.yml tiedoston. Tässä kohdassa käytin tiivistelmääni kohdasta ansible-doc apt apuna (HUOM task tulee lisätä site.yml tiedostoon). Main.yml tiedostosta tuli seuraavanlaien:
+
+```yaml
+- name: "kahden paketin asennus"
+  apt:
+    - curl
+    - tree
+  state: present
+```
+
+Seuraavkasi kokeillaan ettei ohjelmat ole jo valmiiksi asennettu:
+
+<img width="665" height="148" alt="kuva" src="https://github.com/user-attachments/assets/f1e41012-779e-403d-b930-5e3fc83a3284" />
+
+Kuva 4. Testaus ettei ohjelmat ole järjestelmässä.
+
+Seuraavaksi ajetaan ansible uudelleen ja katsotaan asentuuko ohjelmat curl & tree.
+
+Alempana kuva tuloksesta:
+
+<img width="1903" height="723" alt="kuva" src="https://github.com/user-attachments/assets/9e507bbb-99b2-4458-a65a-0421ae741db8" />
+
+Kuva 5. Ansible asentaa.
+
+Muutoksia ainakin tapahtui, seuraavaksi kokeillaan toimiiko curl & tree koneella. Alla kuva tuloksesta:
+
+<img width="1897" height="268" alt="kuva" src="https://github.com/user-attachments/assets/869ea0e6-ea3a-425a-81a7-a64577947ff0" />
+
+Kuva 6. curl ja tree komennot.
+
 ## d) File
 
 ## e) Jotain muuta
