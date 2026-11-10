@@ -157,7 +157,15 @@ Sitten olikin aika ajaa ansible ensimmäisen kerran jotta salasanaton sudo-käyt
 
 Kuva 2. Ensimmäinen ajo ansiblella
 
-Toista ajoa varten korvataan localhost hosts.ini tiedostoon tekstillä anantti@localhost ja ajetaan ansible ilman -K parametriä.
+Toista ajoa varten korvataan localhost hosts.ini tiedostoon tekstillä anantti@localhost ja ajetaan ansible ilman -K parametriä. Hosts.ini näyttää sitten seuraavanlaiselle:
+
+```yaml
+anantti@localhost
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+
+Alempana kuva toisesta ansiblen ajosta:
 
 <img width="1897" height="658" alt="kuva" src="https://github.com/user-attachments/assets/2a39245f-14a5-438b-a2eb-917f8742695d" />
 
