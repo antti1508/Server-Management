@@ -158,7 +158,7 @@ Sitten olikin aika ajaa ansible ensimmäisen kerran jotta salasanaton sudo-käyt
 
 Kuva 2. Ensimmäinen ajo ansiblella
 
-Toista ajoa varten korvataan localhost hosts.ini tiedostoon tekstillä anantti@localhost ja ajetaan ansible ilman -K parametriä. Hosts.ini näyttää sitten seuraavanlaiselle:
+Toista ajoa varten korvataan localhost ```hosts.ini``` tiedostoon tekstillä anantti@localhost ja ajetaan ansible ilman -K parametriä. ```hosts.ini``` näyttää sitten seuraavanlaiselle:
 
 ```yaml
 anantti@localhost
