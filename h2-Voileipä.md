@@ -225,6 +225,26 @@ Oikeudet 0640 symbolisessa muodossa ovat -rw-r----- (4 = luku, 2 = kirjoitus, 0 
 * Ryhmä (sudoless / r--): Saa vain lukea tiedoston.
 * Muut (others / ---): Eivät pääse tiedostoon lainkaan käsiksi.
 
+Ajetaan ansible-playbook ja katsotaan mitä tapahtuu. Saatiin taas muutos, kuva alla:
+
+<img width="1899" height="774" alt="kuva" src="https://github.com/user-attachments/assets/22d282bb-329e-4f73-a0e5-d5b0052df346" />
+
+Kuva 7. Ansiblen tulos.
+
+Tämän jälkeen tarkastetaan toimiiko tiedosto ja oikeudet, käytin ensin komentoa cat /etc/secret.txt käyttäjällä s200963 jolloin saatiin vastaus:
+
+<img width="634" height="79" alt="kuva" src="https://github.com/user-attachments/assets/bc856cd4-7751-4ce8-a93c-b1c02f4713df" />
+
+Kuva 8. Oikeuksien testaus
+
+Seuraavaksi kokeillaan käyttäjällä anantti jolle annoin oikeudet tiedostoon:
+
+<img width="817" height="119" alt="kuva" src="https://github.com/user-attachments/assets/bb4c107c-8e05-4d14-becc-824ef209cd7e" />
+
+Kuva 9. Oikeudet toimii
+
+Kaikki näyttäisi toimivan juuri kuten pitääkin.
+
 ## e) Jotain muuta
 
 ### Lähteet:
