@@ -173,7 +173,7 @@ Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo-käyttäjällä.
 
 ## c) Package
 
-Seuraavaksi minun pitäisi asentaa 2 ohjelmaa ansiblella, aloitin luomalla uuden roolin ja taskin, sekä main.yml tiedoston. Tässä kohdassa käytin tiivistelmääni kohdasta ansible-doc apt apuna (HUOM task tulee lisätä site.yml tiedostoon). Main.yml tiedostosta tuli seuraavanlaien:
+Seuraavaksi minun pitäisi asentaa 2 ohjelmaa ansiblella, aloitin luomalla uuden roolin ja taskin, sekä main.yml tiedoston. Tässä kohdassa käytin tiivistelmääni kohdasta ansible-doc apt apuna **(HUOM task tulee lisätä site.yml tiedostoon)**. Main.yml tiedostosta tuli seuraavanlaien:
 
 ```yaml
 - name: "kahden paketin asennus"
