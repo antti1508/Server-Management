@@ -151,7 +151,7 @@ Tämän jälkeen lisäsin site.yml tiedostoon become: true:n jotta ansiblea ajet
     - anantti
 ```
 
-Sitten olikin aika ajaa ansible ensimmäisen kerran jotta salasanaton sudo käyttäjä luodaan:
+Sitten olikin aika ajaa ansible ensimmäisen kerran jotta salasanaton sudo-käyttäjä luodaan:
 
 <img width="1728" height="670" alt="kuva" src="https://github.com/user-attachments/assets/59dc33b2-8c8c-45ef-a64d-22885a37df40" />
 
@@ -161,7 +161,7 @@ Toista ajoa varten korvataan localhost hosts.ini tiedostoon tekstillä anantti@l
 
 <img width="1897" height="658" alt="kuva" src="https://github.com/user-attachments/assets/2a39245f-14a5-438b-a2eb-917f8742695d" />
 
-Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo käyttäjällä.
+Kuva 3. Toinen ajo ansiblella uudella salasanattomalla sudo-käyttäjällä.
 
 ## c) Package
 
