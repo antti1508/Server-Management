@@ -2,6 +2,12 @@
 
 # x) Lue ja tiivistä
 
+### Tiivistelmä: Karvinen 2026: Apache installed with Ansible - quick notes
+
+### Tiivistelmä: Ansible Community Documentation: Handlers: running operations on change
+
+### Tiivistelmä: ansible-doc service
+
 # y) Infra-uutiset
 
 # a) Apassi. Asenna Apache 2 käsin.
