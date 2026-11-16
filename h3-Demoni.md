@@ -18,11 +18,11 @@
 
 ### Tiivistelmä: ansible-doc service (https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html#ansible-collections-ansible-builtin-service-module)
 
-* ansible.builtin.service -moduulilla hallitaan palveluita (daemoneja) kohdekoneilla. Se toimii yleiskäyttöisenä rajapintana taustajärjestelmän varsinaiselle palvelunhallinnalle (kuten systemd, sysvinit, upstart tai openrc) tunnistaen oikean järjestelmän automaattisesti.
-* enabled (valinnainen, boolean): Määrittää, käynnistyykö palvelu automaattisesti, kun järjestelmä käynnistetään (boot). Vaatii käytännössä joko tämän tai state-parametrin määrittelyn.
-* name (pakollinen, string): Hallittavan palvelun nimi (esimerkiksi httpd tai apache2)
-* state (valinnainen, string): Määrittää palvelun halutun tilan (started, stopped, restarted tai reloaded). Tiloista started ja stopped ovat idempotentteja (eli ne tekevät muutoksen vain, jos palvelu ei jo ole kyseisessä tilassa), kun taas restarted käynnistää palvelun aina uudelleen.
-* EXAMPLES: Käyttöesimerkeissä näytetään tyypillisimmät komennot: yksittäisen palvelun käynnistys (state: started), pysäytys (state: stopped), uudelleenkäynnistys (state: restarted), asetusten uudelleenlataus (state: reloaded), automaattisen käynnistyksen kytkentä päälle (enabled: true) sekä usean palvelun käynnistäminen silmukassa (loop).
+* ```ansible.builtin.service``` -moduulilla hallitaan palveluita (daemoneja) kohdekoneilla. Se toimii yleiskäyttöisenä rajapintana taustajärjestelmän varsinaiselle palvelunhallinnalle (kuten ```systemd```, ```sysvinit```, ```upstart``` tai ```openrc```) tunnistaen oikean järjestelmän automaattisesti.
+* enabled (valinnainen, boolean): Määrittää, käynnistyykö palvelu automaattisesti, kun järjestelmä käynnistetään (boot). Vaatii käytännössä joko tämän tai ```state```-parametrin määrittelyn.
+* name (pakollinen, string): Hallittavan palvelun nimi (esimerkiksi ```httpd``` tai ```apache2```)
+* state (valinnainen, string): Määrittää palvelun halutun tilan (```started```, ```stopped```, ```restarted``` tai ```reloaded```). Tiloista ```started``` ja ```stopped``` ovat idempotentteja (eli ne tekevät muutoksen vain, jos palvelu ei jo ole kyseisessä tilassa), kun taas ```restarted``` käynnistää palvelun aina uudelleen.
+* EXAMPLES: Käyttöesimerkeissä näytetään tyypillisimmät komennot: yksittäisen palvelun käynnistys (```state: started```), pysäytys (```state: stopped```), uudelleenkäynnistys (```state: restarted```), asetusten uudelleenlataus (```state: reloaded```), automaattisen käynnistyksen kytkentä päälle (```enabled: true```) sekä usean palvelun käynnistäminen silmukassa (```loop```).
 
 # y) Infra-uutiset
 
