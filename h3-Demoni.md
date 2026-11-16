@@ -14,6 +14,7 @@
 * Handlerit ovat Ansiblen tehtäviä, jotka suoritetaan vain silloin, kun jokin toinen tehtävä tekee kohteeseen muutoksen ja lähettää niille ilmoituksen (notify). Tyypillinen esimerkki on palvelun uudelleenkäynnistys vain silloin, kun sen asetustiedosto on muuttunut – jos muutoksia ei ole, palvelua ei käynnistetä turhaan uudelleen.
 * Tehtävät käynnistävät handlereita ```notify```-avainsanalla, jolle annetaan joko yksittäisen handlerin nimi tai lista nimiä.
 * Handlerit ajetaan siinä järjestyksessä kuin ne on määritelty ```handlers```-osiossa (ei ```notify```-listan järjestyksessä). Lisäksi vaikka useampi tehtävä ilmoittaisi samalle handlerille saman ajon aikana, Ansible suorittaa sen lopuksi vain kerran välttääkseen turhia palvelukatkoja.
+* Oma huomio: On todella kätevää, että Ansible deduplikoi ilmoitukset automaattisesti eli ajaa saman handlerin vain kerran, vaikka viisi eri asetustiedostoa muuttuisi.
 
 ### Tiivistelmä: ansible-doc service (https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html#ansible-collections-ansible-builtin-service-module)
 
