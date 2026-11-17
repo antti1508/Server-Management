@@ -215,7 +215,7 @@ Tiedostoon tallennettiin seuraava HTML-sisältö:
 </head>
 <body>
     <h1>Nginx asennettu Ansiblella!</h1>
-    <p>Ylläpitäjän osuus on automatisoitu Ansible-roolilla ja sivu on muokattu käsin tavallisena käyttäjänä.</p>
+    <p>Ylläpitäjän osuus on automatisoitu Ansiblella.</p>
 </body>
 </html>
 ```
