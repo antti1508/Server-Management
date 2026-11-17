@@ -108,6 +108,20 @@ Palvelun pysähtyminen varmistettiin komennolla ```systemctl status apache2```, 
 
 Kuva 4. Apache disabloituna.
 
+Seuraavkasi asennettiin `nginx`-ohjelmistopaketti ja palvelu määritettiin käynnistymään automaattisesti järjestelmän käynnistyessä (F5, Inc. 2026):
+
+```console
+sudo apt install nginx -y
+sudo systemctl enable --now nginx
+```
+Asennuksen onnistuminen todennettiin komennolla `systemctl status nginx`, joka vahvisti palvelun olevan aktiivinen (`active (running)`). Alempana kuva:
+
+<img width="1469" height="421" alt="kuva" src="https://github.com/user-attachments/assets/5fa6d580-2344-410c-bc57-7cf79fa75700" />
+
+Kuva 5. Nginx aktiivisena.
+
+Debian-pohjaisissa järjestelmissä Nginx käyttää oletusarvoisesti samaa `/var/www/html`-juurihakemistoa kuin Apache2, mutta luo asennuksen yhteydessä hakemistoon uuden `root`-omisteisen `index.nginx-debian.html`-oletustiedoston, jonka Nginx asettaa `index`-direktiivissään etusijalle ennen `index.html`-tiedostoa (F5, Inc. 2026).
+
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
 ## Lähteet
