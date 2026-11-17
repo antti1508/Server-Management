@@ -120,15 +120,36 @@ Asennuksen onnistuminen todennettiin komennolla `systemctl status nginx`, joka v
 
 Kuva 5. Nginx aktiivisena.
 
-Debian-pohjaisissa järjestelmissä Nginx käyttää oletusarvoisesti samaa `/var/www/html`-juurihakemistoa kuin Apache2, mutta luo asennuksen yhteydessä hakemistoon uuden `root`-omisteisen `index.nginx-debian.html`-oletustiedoston, jonka Nginx asettaa `index`-direktiivissään etusijalle ennen `index.html`-tiedostoa (F5, Inc. 2026).
-
-Vaikka julkaisuhakemiston oikeudet oli määritetty jo a-kohdassa, uuden oletustiedoston muokkaaminen vaati sen omistajuuden siirtämisen tavalliselle käyttäjälle (`s200963`) `chown`-komennolla (Kerrisk 2026b):
+Debian-pohjaisissa järjestelmissä Nginx käyttää oletusarvoisesti samaa `/var/www/html`-juurihakemistoa kuin Apache2, ja sen asetuksissa (`index`-direktiivi) `index.html` on etusijalla ennen asennuksen luomaa `index.nginx-debian.html`-oletustiedostoa (F5, Inc. 2026). Koska hakemiston ja `index.html`-tiedoston muokkausoikeudet oli siirretty tavalliselle käyttäjälle (`s200963`) jo a-kohdassa, ylimääräinen `index.nginx-debian.html`-tiedosto poistettiin suoraan ilman `sudo`-komentoa:
 
 ```console
-sudo chown s200963:www-data /var/www/html/index.nginx-debian.html
+rm -f /var/www/html/index.nginx-debian.html
 ```
 
-Omistajuuden vaihdon jälkeen etusivun tiedosto (`/var/www/html/index.nginx-debian.html`) avattiin muokattavaksi tavallisena käyttäjänä ilman korotettuja oikeuksia: `nano /var/www/html/index.nginx-debian.html`
+Tämän jälkeen etusivun tiedosto (`/var/www/html/index.html`) avattiin muokattavaksi tavallisena käyttäjänä ilman korotettuja oikeuksia: `nano /var/www/html/index.html`
+
+Tiedostoon tallennettiin seuraava HTML-sisältö:
+
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Moottorix - Nginx</title>
+</head>
+<body>
+    <h1>Nginx toimii!</h1>
+    <p>Tätä etusivua on muokattu tavallisena käyttäjänä (s200963) ilman sudo-oikeuksia.</p>
+</body>
+</html>
+```
+Lopuksi palvelimen toiminta testattiin hakemalla etusivu komentoriviltä komennolla `curl -i http://localhost`
+
+Alempana kuva nginxin muokatusta verkosivusta:
+
+<img width="1446" height="708" alt="kuva" src="https://github.com/user-attachments/assets/301a9691-da3c-4ee9-82bd-55e21f837f5d" />
+
+Kuva 6. Muokattu Nginx-sivu.
 
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
