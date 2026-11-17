@@ -26,6 +26,19 @@
 
 # y) Infra-uutiset
 
+Infisical-blogissa julkaistu artikkeli tarkastelee perinteisen keskitetyn identiteetin- ja pääsynhallintajärjestelmän, Microsoft Active Directoryn (AD), soveltuvuutta nykyaikaiseen pilvi-infrastruktuuriin. Kirjoittajan mukaan AD on alun perin suunniteltu staattisille konesaliympäristöille, joissa ylläpitäjä hyväksyy manuaalisesti pitkäikäiset fyysiset palvelimet ja työasemat osaksi toimialuetta (Lobsien, 2026).
+
+**Artikkelin keskeiset väitteet ovat:**
+* **Staattinen vs. dynaaminen infrastruktuuri:** Nykyaikaisessa pilvi- ja konttiympäristössä (esim. Kubernetes-podit, CI/CD-ajurit ja testitietokannat) koneidentiteettejä luodaan ja tuhotaan automaattisesti tuhansia kertoja päivässä. Perinteinen ihmisen hyväksyntään nojaava keskitetty hakemisto ei skaalaudu tällaiseen vauhtiin (Lobsien, 2026).
+* **Tietoturvaongelmat automaatiossa:** Kun vanhoja AD-ympäristöjä yritetään pakottaa osaksi modernia automaatiota, organisaatiot päätyvät usein kovakoodaamaan ylläpitäjätunnuksia skripteihin uusien koneiden liittämiseksi. Tämä kumoaa keskitetyn valvonnan alkuperäisen idean ja luo vakavia tietoturva-aukkoja (Lobsien, 2026).
+* **Uusi toimintamalli:** Kirjoittaja esittää, että keskitetyn hakemistopalvelun sijaan moderni infrastruktuuri siirtyy kohti identiteettien liittouttamista (federation, kuten OIDC) ja salaisuuksien välitystä (credential brokering), joissa palvelut todentavat itsensä dynaamisesti ilman raskasta keskitettyä toimialuerakennetta (Lobsien, 2026).
+
+Artikkeli herätti Hacker Newsissa laajan ja kriittisen keskustelun pitkän linjan järjestelmäasiantuntijoiden keskuudessa. Kommentoijat haastoivat artikkelin väitteen siitä, että keskitetyn hallinnan ja Active Directoryn aikakausi olisi ohi (Hacker News, 2026):
+* **Ryhmäkäytäntöjen (Group Policy, GPO) ylivoimaisuus:** Useat asiantuntijat korostivat, että AD:n keskitetty ryhmäkäytäntömoottori on edelleen ylivertainen työasemien ja palvelimien hallinnassa. Sen avulla tuhansia asetuksia, verkko-asemia, tulostimia ja tietoturvasääntöjä voidaan kohdentaa dynaamisesti käyttäjä- ja konetasolla ilman monimutkaisia skriptejä – ominaisuus, jota modernit pilvipohjaiset MDM-ratkaisut eivät ole vieläkään täysin korvanneet (Hacker News, 2026).
+* **AD:n ominaisuuksien väärinymmärrys:** Kommentoijat huomauttivat artikkelin sisältävän teknisiä epätarkkuuksia. Esimerkiksi koneiden liittäminen toimialueeseen ei vaadi ylläpitäjän manuaalista hyväksyntää (ms-DS-MachineAccountQuota), ja palvelutilien salasanojen hallintaan on jo olemassa automatisoitu, salasanaton gMSA-ratkaisu (Group Managed Service Accounts), jota jopa AWS suosittelee Windows-pohjaisille konteille (Hacker News, 2026).
+* **Paikallisten (on-premises) ympäristöjen välttämättömyys:** Keskustelussa muistutettiin, että kriittisillä toimialoilla – kuten terveydenhuollossa, viranomaisissa ja teollisuudessa – laitteita ei voida tai haluta kytkeä pilvipalveluihin tietoturva- ja toimintavarmuussyistä. Näissä ympäristöissä keskitetty paikallinen hallinta on edelleen ehdoton vaatimus (Hacker News, 2026).
+* **Liika hallinta hidastaa kehitystä:** Toisaalta kommentoijat tunnistivat artikkelin kuvaaman byrokratiaongelman. Kun keskitetty hallinta ja tietoturvahallinto paisuvat liian raskaiksi, kehittäjät alkavat kiertää sääntöjä esimerkiksi tilaamalla omia pilvipalvelimia luottokortilla sen sijaan, että odottaisivat viikkoja sisäisen IT-osaston hyväksyntää (Hacker News, 2026).
+
 # a) Apassi. Asenna Apache 2 käsin.
 
 # b) Moottorix. Asenna Nginx käsin.
@@ -34,3 +47,7 @@
 
 ## Lähteet:
 Karvinen, T. 2026. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu 16.11.2026.
+
+Hacker News. (16.11.2026). Keskusteluketju: The Active Directory Era Is Finally Over. Y Combinator. Luettu 17.11.2026. Luettavissa: https://news.ycombinator.com/item?id=50517815
+
+Lobsien, F. (12.11.2026). The Active Directory Era Is Finally Over. Infisical Blog. Luettu 17.11.2026. Luettavissa: https://infisical.com/blog/the-active-directory-era-is-finally-over
