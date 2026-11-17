@@ -60,7 +60,7 @@ Kuva 2. Apachen etusivu.
 
 Oletusarvoisesti Apachen verkkosivujen juurihakemisto (```/var/www/html```) ja sen sisällä olevat tiedostot ovat ```root```-käyttäjän omistuksessa, mikä estää tavallista käyttäjää muokkaamasta sivustoa ilman korotettuja oikeuksia (Debian Wiki 2024).
 
-Ongelma ratkaistiin siirtämällä hakemiston omistajuus suoraan tavalliselle käyttäjälle (```s200963```) ja säilyttämällä ryhmäomistajuus verkkopalvelimen omalla ```www-data```-ryhmällä (Debian Wiki 2024; Kerrisk 2026a). Hakemiston oikeudet asetettiin tasolle ```775```, jotta omistajalla ja ryhmällä on täydet luku-, kirjoitus- ja suoritusoikeudet, kun taas muilla käyttäjillä on vain luku- ja suoritusoikeudet sivujen näyttämistä varten (Kerrisk 2026b).
+Ongelma ratkaistiin siirtämällä hakemiston omistajuus suoraan tavalliselle käyttäjälle (```s200963```) ja säilyttämällä ryhmäomistajuus verkkopalvelimen omalla ```www-data```-ryhmällä (Debian Wiki 2024; Kerrisk 2026b). Hakemiston oikeudet asetettiin tasolle ```775```, jotta omistajalla ja ryhmällä on täydet luku-, kirjoitus- ja suoritusoikeudet, kun taas muilla käyttäjillä on vain luku- ja suoritusoikeudet sivujen näyttämistä varten (Kerrisk 2026a).
 
 ```console
 sudo chown -R s200963:www-data /var/www/html
@@ -110,19 +110,19 @@ Kuva 4. Apache disabloituna.
 
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
-## Lähteet:
-Karvinen, T. 2026. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu 16.11.2026.
-
-Hacker News. (16.11.2026). Keskusteluketju: The Active Directory Era Is Finally Over. Y Combinator. Luettu 17.11.2026. Luettavissa: https://news.ycombinator.com/item?id=50517815
-
-Lobsien, F. (12.11.2026). The Active Directory Era Is Finally Over. Infisical Blog. Luettu 17.11.2026. Luettavissa: https://infisical.com/blog/the-active-directory-era-is-finally-over
-
-Debian Wiki. (2024). Apache. Debian. Viitattu 17.11.2026. https://wiki.debian.org/Apache
+## Lähteet
+Debian Wiki 2024. Apache. Luettavissa: https://wiki.debian.org/Apache. Luettu: 17.11.2026.
 
 F5, Inc. 2026. NGINX Documentation: Beginner's Guide. Luettavissa: https://nginx.org/en/docs/beginners_guide.html. Luettu: 17.11.2026.
 
-Kerrisk, M. (2026a). chown(1) — Linux manual page. man7.org. Viitattu 17.11.2026. https://man7.org/linux/man-pages/man1/chown.1.html
+Hacker News 2026. Keskusteluketju: The Active Directory Era Is Finally Over. Y Combinator. Luettavissa: https://news.ycombinator.com/item?id=50517815. Luettu: 17.11.2026.
 
-Kerrisk, M. (2026b). chmod(1) — Linux manual page. man7.org. Viitattu 17.11.2026. https://man7.org/linux/man-pages/man1/chmod.1.html
+Karvinen, T. 2026. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 16.11.2026.
 
-The Apache Software Foundation. (2026). Apache HTTP Server Version 2.4 Documentation: Starting Apache. Viitattu 17.11.2026. https://httpd.apache.org/docs/2.4/invoking.html
+Kerrisk, M. 2026a. chmod(1) — Linux manual page. Luettavissa: https://man7.org/linux/man-pages/man1/chmod.1.html. Luettu: 17.11.2026.
+
+Kerrisk, M. 2026b. chown(1) — Linux manual page. Luettavissa: https://man7.org/linux/man-pages/man1/chown.1.html. Luettu: 17.11.2026.
+
+Lobsien, F. 2026. The Active Directory Era Is Finally Over. Infisical Blog. Luettavissa: https://infisical.com/blog/the-active-directory-era-is-finally-over. Luettu: 17.11.2026.
+
+The Apache Software Foundation 2026. Apache HTTP Server Version 2.4 Documentation: Starting Apache. Luettavissa: https://httpd.apache.org/docs/2.4/invoking.html. Luettu: 17.11.2026.
