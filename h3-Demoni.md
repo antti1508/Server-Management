@@ -165,6 +165,67 @@ mkdir -p ~/ansible/roles/nginx/tasks
 
 Kuva 7. Kansiorakenne nyt ansiblessa.
 
+Roolin tehtävätiedostoon (`roles/nginx/tasks/main.yml`) määriteltiin osuus: `nginx`-paketin asennus, mahdollisen Debianin oletussivun poisto, `/var/www/html`-julkaisuhakemiston omistajuuden ja oikeuksien (`0775`) asettaminen tavalliselle käyttäjälle (`s200963`) sekä palvelun käynnistäminen ja automaattisen käynnistyksen varmistaminen (Red Hat, Inc. 2026):
+
+```yaml
+- name: Asenna nginx-paketti
+  apt:
+    name: nginx
+    state: present
+
+- name: Poista Debianin oletussivu
+  file:
+    path: /var/www/html/index.nginx-debian.html
+    state: absent
+
+- name: Aseta julkaisuhakemiston oikeudet tavalliselle käyttäjälle
+  file:
+    path: /var/www/html
+    state: directory
+    owner: s200963
+    group: www-data
+    mode: '0775'
+    recurse: yes
+
+- name: Varmista että nginx on käynnissä ja käytössä
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+```
+
+Tämän jälkeen nginx-rooli piti vielä lisätä ```site.yml```-tiedostoon.
+
+Playbook suoritettiin komennolla `ansible-playbook site.yml`. Tulos alla:
+
+<img width="1561" height="1122" alt="kuva" src="https://github.com/user-attachments/assets/1214c74a-9348-4cae-a86b-122d86eab328" />
+
+Kuva 8. Ansbilen tulos.
+
+Ylläpitäjän osuuden jälkeen itse HTML-verkkosivu muokattiin käsin tavallisena käyttäjänä ilman korotettuja oikeuksia: `nano /var/www/html/index.html`
+
+Tiedostoon tallennettiin seuraava HTML-sisältö:
+
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Automoottorix - Ansible Nginx</title>
+</head>
+<body>
+    <h1>Nginx asennettu Ansiblella!</h1>
+    <p>Ylläpitäjän osuus on automatisoitu Ansible-roolilla ja sivu on muokattu käsin tavallisena käyttäjänä.</p>
+</body>
+</html>
+```
+
+Lopuksi palvelimen toiminta ja päivitetty etusivu varmistettiin komentoriviltä komennolla `curl -i http://localhost`. Kuva alempana:
+
+<img width="847" height="515" alt="kuva" src="https://github.com/user-attachments/assets/e6cdcec9-eaaa-428b-8b75-f269e2645ff8" />
+
+Kuva 9. Curl komennon tulos.
+
 ## Lähteet
 Debian Wiki 2024. Apache. Luettavissa: https://wiki.debian.org/Apache. Luettu: 17.11.2026.
 
@@ -179,5 +240,7 @@ Kerrisk, M. 2026a. chmod(1) — Linux manual page. Luettavissa: https://man7.org
 Kerrisk, M. 2026b. chown(1) — Linux manual page. Luettavissa: https://man7.org/linux/man-pages/man1/chown.1.html. Luettu: 17.11.2026.
 
 Lobsien, F. 2026. The Active Directory Era Is Finally Over. Infisical Blog. Luettavissa: https://infisical.com/blog/the-active-directory-era-is-finally-over. Luettu: 17.11.2026.
+
+Red Hat, Inc. 2026. Ansible Documentation: Using Ansible playbooks. Luettavissa: https://docs.ansible.com/ansible/latest/playbook_guide/index.html. Luettu: 17.11.2026.
 
 The Apache Software Foundation 2026. Apache HTTP Server Version 2.4 Documentation: Starting Apache. Luettavissa: https://httpd.apache.org/docs/2.4/invoking.html. Luettu: 17.11.2026.
