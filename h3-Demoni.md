@@ -67,6 +67,31 @@ sudo chown -R s200963:www-data /var/www/html
 sudo chmod -R 775 /var/www/html
 ```
 
+Oikeuksien muutos varmistettiin komennolla ls -ld /var/www/html, jonka tuloste (drwxrwxr-x) vahvisti tavallisen käyttäjän omistajuuden.
+
+Oikeusmuutosten jälkeen etusivun tiedosto (/var/www/html/index.html) avattiin muokattavaksi tavallisena käyttäjänä ilman sudo-komentoa: ```nano /var/www/html/index.html```
+
+Tiedoston oletussisältö korvattiin seuraavalla HTML-rakenteella:
+
+```html
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Apache-testisivu</title>
+</head>
+<body>
+    <h1>Apache2 toimii!</h1>
+    <p>Tätä etusivua on muokattu tavallisena käyttäjänä ilman sudo-oikeuksia.</p>
+</body>
+</html>
+```
+
+Alempana kuva apachen muokatusta verkosivusta:
+
+<img width="2537" height="584" alt="kuva" src="https://github.com/user-attachments/assets/3e82cd29-bb1f-4833-9222-7731e944b017" />
+
+Kuva 3. Apachen muokattu verkkosivu.
 
 # b) Moottorix. Asenna Nginx käsin.
 
