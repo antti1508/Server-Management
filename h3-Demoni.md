@@ -122,6 +122,14 @@ Kuva 5. Nginx aktiivisena.
 
 Debian-pohjaisissa järjestelmissä Nginx käyttää oletusarvoisesti samaa `/var/www/html`-juurihakemistoa kuin Apache2, mutta luo asennuksen yhteydessä hakemistoon uuden `root`-omisteisen `index.nginx-debian.html`-oletustiedoston, jonka Nginx asettaa `index`-direktiivissään etusijalle ennen `index.html`-tiedostoa (F5, Inc. 2026).
 
+Vaikka julkaisuhakemiston oikeudet oli määritetty jo a-kohdassa, uuden oletustiedoston muokkaaminen vaati sen omistajuuden siirtämisen tavalliselle käyttäjälle (`s200963`) `chown`-komennolla (Kerrisk 2026b):
+
+```console
+sudo chown s200963:www-data /var/www/html/index.nginx-debian.html
+```
+
+Omistajuuden vaihdon jälkeen etusivun tiedosto (`/var/www/html/index.nginx-debian.html`) avattiin muokattavaksi tavallisena käyttäjänä ilman korotettuja oikeuksia: `nano /var/www/html/index.nginx-debian.html`
+
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
 ## Lähteet
