@@ -147,7 +147,7 @@ Lopuksi palvelimen toiminta testattiin hakemalla etusivu komentoriviltä komenno
 
 Alempana kuva nginxin muokatusta verkosivusta:
 
-<img width="1446" height="708" alt="kuva" src="https://github.com/user-attachments/assets/301a9691-da3c-4ee9-82bd-55e21f837f5d" />
+<img width="1446" height="1120" alt="kuva" src="https://github.com/user-attachments/assets/246b91e7-e429-40a2-8c11-3e074963b00c" />
 
 Kuva 6. Muokattu Nginx-sivu.
 
@@ -165,7 +165,7 @@ mkdir -p ~/ansible/roles/nginx/tasks
 
 Kuva 7. Kansiorakenne nyt ansiblessa.
 
-Roolin tehtävätiedostoon (`roles/nginx/tasks/main.yml`) määriteltiin osuus: `nginx`-paketin asennus, mahdollisen Debianin oletussivun poisto, `/var/www/html`-julkaisuhakemiston omistajuuden ja oikeuksien (`0775`) asettaminen tavalliselle käyttäjälle (`s200963`) sekä palvelun käynnistäminen ja automaattisen käynnistyksen varmistaminen (Red Hat, Inc. 2026):
+Roolin tehtävätiedostoon (`roles/nginx/tasks/main.yml`) määriteltiin osuus: `nginx`-paketin asennus, mahdollisen asennuksen luoman oletussivun poisto, `/var/www/html`-julkaisuhakemiston omistajuuden ja oikeuksien (`0775`) asettaminen tavalliselle käyttäjälle (`s200963`) sekä palvelun käynnistäminen ja automaattisen käynnistyksen varmistaminen (Red Hat, Inc. 2026):
 
 ```yaml
 - name: Asenna nginx-paketti
