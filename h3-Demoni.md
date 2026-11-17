@@ -58,6 +58,15 @@ Kuva 1. Apachen status.
 
 Kuva 2. Apachen etusivu.
 
+Oletusarvoisesti Apachen verkkosivujen juurihakemisto (```/var/www/html```) ja sen sisällä olevat tiedostot ovat ```root```-käyttäjän omistuksessa, mikä estää tavallista käyttäjää muokkaamasta sivustoa ilman korotettuja oikeuksia.
+
+Ongelma ratkaistiin siirtämällä hakemiston omistajuus suoraan tavalliselle käyttäjälle (```s200963```) ja säilyttämällä ryhmäomistajuus verkkopalvelimen omalla ```www-data```-ryhmällä. Hakemiston oikeudet asetettiin tasolle ```775```, jotta omistajalla ja ryhmällä on täydet luku-, kirjoitus- ja suoritusoikeudet, kun taas muilla käyttäjillä on vain luku- ja suoritusoikeudet sivujen näyttämistä varten.
+
+```console
+sudo chown -R s200963:www-data /var/www/html
+sudo chmod -R 775 /var/www/html
+```
+
 
 # b) Moottorix. Asenna Nginx käsin.
 
