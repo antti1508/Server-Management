@@ -48,7 +48,16 @@ sudo apt update
 sudo apt install apache2 -y
 sudo systemctl enable --now apache2
 ```
-Asennuksen onnistuminen varmistettiin tarkistamalla palvelun tila komennolla ```systemctl status apache2```, joka vahvisti palvelun olevan aktiivinen (```active (running)```). Lisäksi yhteys testattiin paikallisesti hakemalla etusivu osoitteesta ```http://localhost```, jolloin palvelin vastasi Apachen oletussivulla.
+Asennuksen onnistuminen varmistettiin tarkistamalla palvelun tila komennolla ```systemctl status apache2```, joka vahvisti palvelun olevan aktiivinen (```active (running)```). Lisäksi yhteys testattiin paikallisesti hakemalla etusivu osoitteesta ```http://localhost```, jolloin palvelin vastasi Apachen oletussivulla. Alempana kuvat testauksista:
+
+<img width="1466" height="457" alt="kuva" src="https://github.com/user-attachments/assets/fbf10d56-0c8f-4991-97d6-e46698150468" />
+
+Kuva 1. Apachen status.
+
+<img width="2549" height="1305" alt="kuva" src="https://github.com/user-attachments/assets/8666132f-788e-409b-83fe-d15f1034cd79" />
+
+Kuva 2. Apachen etusivu.
+
 
 # b) Moottorix. Asenna Nginx käsin.
 
