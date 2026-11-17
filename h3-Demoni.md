@@ -139,7 +139,7 @@ Tiedostoon tallennettiin seuraava HTML-sisältö:
 </head>
 <body>
     <h1>Nginx toimii!</h1>
-    <p>Tätä etusivua on muokattu tavallisena käyttäjänä (s200963) ilman sudo-oikeuksia.</p>
+    <p>Tätä etusivua on muokattu tavallisena käyttäjänä ilman sudo-oikeuksia.</p>
 </body>
 </html>
 ```
