@@ -41,14 +41,14 @@ Artikkeli herätti Hacker Newsissa laajan ja kriittisen keskustelun pitkän linj
 
 # a) Apassi. Asenna Apache 2 käsin.
 
-Asennus aloitettiin päivittämällä paketinhallinnan paikallinen pakettilista ja asentamalla ```apache2```-ohjelmistopaketti. Palvelu asetettiin käynnistymään automaattisesti järjestelmän käynnistyksen yhteydessä. Tähän käytin komentoja:
+Asennus aloitettiin päivittämällä paketinhallinnan paikallinen pakettilista ja asentamalla ```apache2```-ohjelmistopaketti (Debian Wiki 2024). Palvelu asetettiin käynnistymään automaattisesti järjestelmän käynnistyksen yhteydessä (The Apache Software Foundation 2026). Tähän käytin komentoja:
 
 ```console
 sudo apt update
 sudo apt install apache2 -y
 sudo systemctl enable --now apache2
 ```
-Asennuksen onnistuminen varmistettiin tarkistamalla palvelun tila komennolla ```systemctl status apache2```, joka vahvisti palvelun olevan aktiivinen (```active (running)```). Lisäksi yhteys testattiin paikallisesti hakemalla etusivu osoitteesta ```http://localhost```, jolloin palvelin vastasi Apachen oletussivulla. Alempana kuvat testauksista:
+Asennuksen onnistuminen varmistettiin tarkistamalla palvelun tila komennolla ```systemctl status apache2```, joka vahvisti palvelun olevan aktiivinen (```active (running)```). Lisäksi yhteys testattiin paikallisesti hakemalla etusivu osoitteesta ```http://localhost```, jolloin palvelin vastasi Apachen oletussivulla (Debian Wiki 2024). Alempana kuvat testauksista:
 
 <img width="1466" height="457" alt="kuva" src="https://github.com/user-attachments/assets/fbf10d56-0c8f-4991-97d6-e46698150468" />
 
@@ -58,18 +58,18 @@ Kuva 1. Apachen status.
 
 Kuva 2. Apachen etusivu.
 
-Oletusarvoisesti Apachen verkkosivujen juurihakemisto (```/var/www/html```) ja sen sisällä olevat tiedostot ovat ```root```-käyttäjän omistuksessa, mikä estää tavallista käyttäjää muokkaamasta sivustoa ilman korotettuja oikeuksia.
+Oletusarvoisesti Apachen verkkosivujen juurihakemisto (```/var/www/html```) ja sen sisällä olevat tiedostot ovat ```root```-käyttäjän omistuksessa, mikä estää tavallista käyttäjää muokkaamasta sivustoa ilman korotettuja oikeuksia (Debian Wiki 2024).
 
-Ongelma ratkaistiin siirtämällä hakemiston omistajuus suoraan tavalliselle käyttäjälle (```s200963```) ja säilyttämällä ryhmäomistajuus verkkopalvelimen omalla ```www-data```-ryhmällä. Hakemiston oikeudet asetettiin tasolle ```775```, jotta omistajalla ja ryhmällä on täydet luku-, kirjoitus- ja suoritusoikeudet, kun taas muilla käyttäjillä on vain luku- ja suoritusoikeudet sivujen näyttämistä varten.
+Ongelma ratkaistiin siirtämällä hakemiston omistajuus suoraan tavalliselle käyttäjälle (```s200963```) ja säilyttämällä ryhmäomistajuus verkkopalvelimen omalla ```www-data```-ryhmällä (Debian Wiki 2024; Kerrisk 2026a). Hakemiston oikeudet asetettiin tasolle ```775```, jotta omistajalla ja ryhmällä on täydet luku-, kirjoitus- ja suoritusoikeudet, kun taas muilla käyttäjillä on vain luku- ja suoritusoikeudet sivujen näyttämistä varten (Kerrisk 2026b).
 
 ```console
 sudo chown -R s200963:www-data /var/www/html
 sudo chmod -R 775 /var/www/html
 ```
 
-Oikeuksien muutos varmistettiin komennolla ls -ld /var/www/html, jonka tuloste (drwxrwxr-x) vahvisti tavallisen käyttäjän omistajuuden.
+Oikeuksien muutos varmistettiin komennolla ```ls -ld /var/www/html```, jonka tuloste (```drwxrwxr-x```) vahvisti tavallisen käyttäjän omistajuuden.
 
-Oikeusmuutosten jälkeen etusivun tiedosto (/var/www/html/index.html) avattiin muokattavaksi tavallisena käyttäjänä ilman sudo-komentoa: ```nano /var/www/html/index.html```
+Oikeusmuutosten jälkeen etusivun tiedosto (```/var/www/html/index.html```) avattiin muokattavaksi tavallisena käyttäjänä ilman sudo-komentoa: ```nano /var/www/html/index.html```
 
 Tiedoston oletussisältö korvattiin seuraavalla HTML-rakenteella:
 
@@ -95,6 +95,19 @@ Kuva 3. Apachen muokattu verkkosivu.
 
 # b) Moottorix. Asenna Nginx käsin.
 
+Koska sekä Apache2 että Nginx käyttävät oletusarvoisesti samaa HTTP-porttia 80, aiemmin asennettu Apache2-palvelu pysäytettiin ja sen automaattinen käynnistyminen estettiin ennen Nginxin käyttöönottoa porttiristiriitojen välttämiseksi komennoilla (F5, Inc. 2026; The Apache Software Foundation 2026):
+
+```console
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+```
+
+Palvelun pysähtyminen varmistettiin komennolla ```systemctl status apache2```, jonka tuloste osoitti palvelun olevan tilassa ```inactive (dead)```, kuva alla:
+
+<img width="1458" height="384" alt="kuva" src="https://github.com/user-attachments/assets/a1dd25d6-ce6c-40b6-ba69-03fe7c77c188" />
+
+Kuva 4. Apache disabloituna.
+
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
 ## Lähteet:
@@ -103,3 +116,13 @@ Karvinen, T. 2026. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/p
 Hacker News. (16.11.2026). Keskusteluketju: The Active Directory Era Is Finally Over. Y Combinator. Luettu 17.11.2026. Luettavissa: https://news.ycombinator.com/item?id=50517815
 
 Lobsien, F. (12.11.2026). The Active Directory Era Is Finally Over. Infisical Blog. Luettu 17.11.2026. Luettavissa: https://infisical.com/blog/the-active-directory-era-is-finally-over
+
+Debian Wiki. (2024). Apache. Debian. Viitattu 17.11.2026. https://wiki.debian.org/Apache
+
+F5, Inc. 2026. NGINX Documentation: Beginner's Guide. Luettavissa: https://nginx.org/en/docs/beginners_guide.html. Luettu: 17.11.2026.
+
+Kerrisk, M. (2026a). chown(1) — Linux manual page. man7.org. Viitattu 17.11.2026. https://man7.org/linux/man-pages/man1/chown.1.html
+
+Kerrisk, M. (2026b). chmod(1) — Linux manual page. man7.org. Viitattu 17.11.2026. https://man7.org/linux/man-pages/man1/chmod.1.html
+
+The Apache Software Foundation. (2026). Apache HTTP Server Version 2.4 Documentation: Starting Apache. Viitattu 17.11.2026. https://httpd.apache.org/docs/2.4/invoking.html
