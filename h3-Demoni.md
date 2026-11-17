@@ -41,6 +41,15 @@ Artikkeli herätti Hacker Newsissa laajan ja kriittisen keskustelun pitkän linj
 
 # a) Apassi. Asenna Apache 2 käsin.
 
+Asennus aloitettiin päivittämällä paketinhallinnan paikallinen pakettilista ja asentamalla ```apache2```-ohjelmistopaketti. Palvelu asetettiin käynnistymään automaattisesti järjestelmän käynnistyksen yhteydessä. Tähän käytin komentoja:
+
+```console
+sudo apt update
+sudo apt install apache2 -y
+sudo systemctl enable --now apache2
+```
+Asennuksen onnistuminen varmistettiin tarkistamalla palvelun tila komennolla ```systemctl status apache2```, joka vahvisti palvelun olevan aktiivinen (```active (running)```). Lisäksi yhteys testattiin paikallisesti hakemalla etusivu osoitteesta ```http://localhost```, jolloin palvelin vastasi Apachen oletussivulla.
+
 # b) Moottorix. Asenna Nginx käsin.
 
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
