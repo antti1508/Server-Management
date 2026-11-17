@@ -153,6 +153,18 @@ Kuva 6. Muokattu Nginx-sivu.
 
 # c) Automoottorix. Automatisoi Nginx asennus Ansiblella.
 
+Tehtävässä automatisoitiin Nginx-verkkopalvelimen ylläpitäjän toimenpiteet Ansible-työkalulla kurssimateriaalin ohjeiden mukaisesti (Karvinen 2026). Konfiguraatio jäsenneltiin Ansiblen suositusten mukaisesti käyttämällä pää-playbookia (`site.yml`) sekä erillistä `nginx`-roolia (`roles/nginx/tasks/main.yml`) (Red Hat, Inc. 2026).
+
+Ensin luotiin tarvittava hakemistorakenne `~/ansible`-työhakemiston alle:
+
+```console
+mkdir -p ~/ansible/roles/nginx/tasks
+```
+
+<img width="1143" height="803" alt="kuva" src="https://github.com/user-attachments/assets/a8621bca-28da-4cf3-b357-9bbc022f1cc5" />
+
+Kuva 7. Kansiorakenne nyt ansiblessa.
+
 ## Lähteet
 Debian Wiki 2024. Apache. Luettavissa: https://wiki.debian.org/Apache. Luettu: 17.11.2026.
 
