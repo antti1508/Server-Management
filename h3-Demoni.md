@@ -173,7 +173,7 @@ Roolin tehtävätiedostoon (`roles/nginx/tasks/main.yml`) määriteltiin osuus: 
     name: nginx
     state: present
 
-- name: Poista Debianin oletussivu
+- name: Poista nginx oletussivu
   file:
     path: /var/www/html/index.nginx-debian.html
     state: absent
