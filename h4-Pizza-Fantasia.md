@@ -26,7 +26,7 @@
 
 ## a) Räpylä.
 
-Päätin asentaa uutena demonina vsftpd:n, joka on tiedostosiirtopalvelin. Kokeilin samalla myös että vsftp asennettiin onnistuneesti. Käytin asentamiseen komentoja:
+Päätin asentaa uutena demonina vsftpd:n, joka on tiedostosiirtopalvelin. Kokeilin samalla myös että vsftp asennettiin onnistuneesti. Käytin seuraavanlaisia komentoja:
 
 ```command
 sudo apt update && sudo apt install -y vsftpd
