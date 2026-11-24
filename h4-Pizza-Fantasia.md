@@ -47,6 +47,39 @@ sudo rm -f /etc/vsftpd.conf
 
 ## b) Automaatti.
 
+Aloitin luomalla kansiorakenteen komennolla (pwd=/home/user/ansible): ```mkdir -p roles/vsftpd/{tasks,handlers,files}```
+
+
+Sitten loin main.yml-tiedoston tasks kansioon komennolla: ```nano roles/vsftpd/taska/main.yml``` ja muokkasin tiedostoa niin että se asentaa vsftpd:n ja tarkistaa että se on käynnissä (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/)
+
+Conf-tiedostosta tuli seuraavanlainen
+
+```yaml
+- name: Asenna vsftpd
+  apt:
+    name: vsftpd
+    state: present
+    update_cache: true
+
+- name: Varmista että vsftpd on käynnissä
+  service:
+    name: vsftpd
+    state: started
+    enabled: true
+```
+
+Sitten lisäsin roolin vielä site.yml tiedostoon ja tämän jälkeen ajoin ansiblen kommennolla ansible-playbook site.yml, alla tulos ja kokeilu että vsftpd asentui ja on käynnissä:
+
+
+<img width="626" height="185" alt="kuva" src="https://github.com/user-attachments/assets/5ce20da6-c8d9-4a41-9920-4d990baffebe" />
+
+Kuva 2. Ansiblen ajo
+
+
+<img width="1812" height="526" alt="kuva" src="https://github.com/user-attachments/assets/c031ef81-dee6-465a-b15f-8cf7edce6212" />
+
+Kuva 3. vsftpd asennus onnistui.
+
 ## c) Asetus.
 
 ## d) Paikka remonttiin.
@@ -61,3 +94,7 @@ Pari on ilmoitettu Moodleen.
 Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
 
 Karvinen, T. 2026b. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 24.11.2026.
+
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
+
+https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html
