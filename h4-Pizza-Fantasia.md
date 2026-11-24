@@ -16,6 +16,7 @@
 - Mozillan manifesteissa yli 1 %:n osuuteen yltävät komennot kattoivat 87 % kaikesta käytöstä. Käytetyimmät funktiot olivat `file` (19 %), `package` (10 %), `exec` (6 %) ja `service` (3 %), kun taas kontrollirakenteista korostuivat `case` (20 %), `if` (3 %), `class` (3 %) sekä resurssiriippuvuuksien hallintaan käytetty `anchor` (2 %).
 - USGCB-konfiguraatiossa toistui sama kaava: `augeas` (22,5 %, olemassa olevien tiedostojen muokkaus), `file` (16,7 %), `service` (14,7 %), `exec` (14,7 %) ja `package` (12,7 %).
 - Vaikka työkaluissa on satoja funktioita, käytännön tarpeet katetaan muutamalla perusfunktiolla: taustaprosesseille `package-file-service` ja työasemaohjelmille `package-file`.
+- Oma huomio: Tämä selittää hyvin, miksi kurssillakin pääsee näin pitkälle pelkillä apt-, copy- ja service-moduuleilla — satojen erikoisfunktioiden sijaan 90 % oikeasta hallintatyöstä pyörii samojen perusasioiden ympärillä.
 
 #### 4.12.3.1 Dependencies Between Main Functions (s. 115–117)
 
