@@ -26,7 +26,7 @@
 
 ## a) Räpylä.
 
-Päätin asentaa uutena demonina vsftpd:n, joka on tiedostosiirtopalvelin. Kokeilin samalla myös että vsftp asennettiin onnistuneesti. Käytin seuraavanlaisia komentoja:
+Päätin asentaa uutena demonina vsftpd:n, joka on tiedostosiirtopalvelin. Kokeilin samalla myös, että vsftpd asennettiin onnistuneesti. Käytin seuraavanlaisia komentoja:
 
 ```command
 sudo apt update && sudo apt install -y vsftpd
@@ -38,7 +38,7 @@ sudo vsftpd -v
 
 Kuva 1. vsftpd:n asennuksen tarkistus.
 
-Lopuksi poistin vsftpd:n, jotta ansible sitten asentaa sen seuraavassa kohdassa. Käytin tähän komentoja: 
+Lopuksi poistin vsftpd:n, jotta Ansible asentaa sen seuraavassa kohdassa. Käytin tähän komentoja: 
 
 ```command
 sudo apt purge -y vsftpd
@@ -47,12 +47,11 @@ sudo rm -f /etc/vsftpd.conf
 
 ## b) Automaatti.
 
-Aloitin luomalla kansiorakenteen komennolla (pwd=/home/user/ansible): ```mkdir -p roles/vsftpd/{tasks,handlers,files}```
+Aloitin luomalla kansiorakenteen komennolla (`pwd=/home/user/ansible`): `mkdir -p roles/vsftpd/{tasks,handlers,files}`.
 
+Sitten loin `main.yml`-tiedoston `tasks`-kansioon komennolla `nano roles/vsftpd/tasks/main.yml` ja muokkasin tiedostoa niin, että se asentaa vsftpd:n ja tarkistaa, että se on käynnissä (Ansible Documentation, 2026).
 
-Sitten loin main.yml-tiedoston tasks kansioon komennolla: ```nano roles/vsftpd/taska/main.yml``` ja muokkasin tiedostoa niin että se asentaa vsftpd:n ja tarkistaa että se on käynnissä (https://docs.ansible.com/ansible/latest/collections/ansible/builtin/)
-
-Conf-tiedostosta tuli seuraavanlainen
+Tiedostosta `main.yml` tuli seuraavanlainen:
 
 ```yaml
 - name: Asenna vsftpd
@@ -68,17 +67,15 @@ Conf-tiedostosta tuli seuraavanlainen
     enabled: true
 ```
 
-Sitten lisäsin roolin vielä site.yml tiedostoon ja tämän jälkeen ajoin ansiblen kommennolla ansible-playbook site.yml, alla tulos ja kokeilu että vsftpd asentui ja on käynnissä:
-
+Sitten lisäsin roolin vielä `site.yml`-tiedostoon, ja tämän jälkeen ajoin Ansiblen komennolla `ansible-playbook site.yml`. Alla on tulos ja kokeilu siitä, että vsftpd asentui ja on käynnissä:
 
 <img width="626" height="185" alt="kuva" src="https://github.com/user-attachments/assets/5ce20da6-c8d9-4a41-9920-4d990baffebe" />
 
-Kuva 2. Ansiblen ajo
-
+Kuva 2. Ansiblen ajo.
 
 <img width="1812" height="526" alt="kuva" src="https://github.com/user-attachments/assets/c031ef81-dee6-465a-b15f-8cf7edce6212" />
 
-Kuva 3. vsftpd asennus onnistui.
+Kuva 3. vsftpd-asennus onnistui.
 
 ## c) Asetus.
 
@@ -91,10 +88,10 @@ Kuva 3. vsftpd asennus onnistui.
 Pari on ilmoitettu Moodleen.
 
 ## Lähteet
+Ansible Documentation 2026. ansible.builtin collection. Luettavissa: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
+
 Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
 
 Karvinen, T. 2026b. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 24.11.2026.
-
-https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
 
 https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html
