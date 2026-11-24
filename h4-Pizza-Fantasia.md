@@ -159,6 +159,14 @@ Kuva 10. Palvelin toimii jälleen mukautetuilla asetuksilla.
 
 ## e) Idempotentti.
 
+Osoitin tilan idempotenssin ajamalla saman Ansible-playbookin uudestaan komennolla `ansible-playbook site.yml` tekemättä mitään muutoksia rooliin tai kohdejärjestelmään:
+
+<img width="2531" height="983" alt="kuva" src="https://github.com/user-attachments/assets/e1f53e26-a459-4e6a-9b99-ecee7e838172" />
+
+Kuva 11. Playbookin uudelleenajo tuottaa tuloksen changed=0.
+
+Tulosteesta nähdään, että kaikki tehtävät palauttivat tilan `ok` ja muutosten määrä oli nolla (`changed=0`). Myöskään palvelun uudelleenkäynnistävää handleria ei suoritettu uudelleen, koska paketti oli jo asennettuna, asetustiedosto vastasi tavoitetilaa ja demoni oli käynnissä. Tämä todistaa toteutuksen olevan idempotentti.
+
 ## f) (Vain Pasilan ryhmä -3015)
 
 Pari on ilmoitettu Moodleen.
