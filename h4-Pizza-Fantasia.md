@@ -2,22 +2,22 @@
 
 ## x) Lue ja tiivistä.
 
-### Tiivistelmä: Karvinen 2023: Configuration Management of Distributed Systems over Unreliable and Hostile Networks, vaaditut kohdat eli s.112-117 (https://westminsterresearch.westminster.ac.uk/download/4cc417566aa9af60fe3826d690719e390abdb7a3c8672f3d51b1eb4ca75e7624/1427236/karvinen-2023-configuration-management-of-distributed-systems.pdf)
+### Tiivistelmä: Configuration Management of Distributed Systems over Unreliable and Hostile Networks (Karvinen, 2023, s. 112–117)
 
-### 4.12.1 Size and Complexity of Some DSLs s. 112
+#### 4.12.1 Size and Complexity of Some DSLs (s. 112)
 
-- Karvinen analysoi Salt-työkalun (versio 2017.7.4 "Nitrogen") lähdekoodista generoitua dokumentaatiota. Saltin DSL sisältää 510 tilafunktiota (state functions), joiden dokumentaatio on yli 20 000 riviä ja yli 75 000 sanaa.
-- Lukuun eivät sisälly ehtolauseet (if-else) tai silmukat (for). Salt toteuttaa nämä generoimalla YAML-koodia Jinja2-mallipohjilla (templates), mikä luo ylläpitäjälle jälleen uuden matalan tason abstraktiokerroksen ymmärrettäväksi.
-- Puppet tarjoaa suoraan 113 funktiota. Sen kontrollirakenteet eroavat huomattavasti yleiskäyttöisistä kielistä (kuten C, Go tai Python): esimerkiksi toistuvia tehtäviä varten funktioiden sijaan käytetään omia erikoiskäsitteitä, kuten virtuaalisia resursseja (virtual resources).
+- Karvinen analysoi Salt-työkalun (versio 2017.7.4 "Nitrogen") lähdekoodista generoitua dokumentaatiota. Saltin DSL sisältää 510 tilafunktiota (*state functions*), joiden dokumentaatio on yli 20 000 riviä ja yli 75 000 sanaa.
+- Lukuun eivät sisälly ehtolauseet (`if-else`) tai silmukat (`for`). Salt toteuttaa nämä generoimalla YAML-koodia Jinja2-mallipohjilla (*templates*), mikä luo ylläpitäjälle uuden matalan tason abstraktiokerroksen hallittavaksi.
+- Puppet tarjoaa suoraan 113 funktiota. Sen kontrollirakenteet eroavat huomattavasti yleiskäyttöisistä kielistä (kuten C, Go tai Python): esimerkiksi toistuvia tehtäviä varten funktioiden sijaan käytetään omia erikoiskäsitteitä, kuten virtuaalisia resursseja (*virtual resources*).
 
-### 4.12.2 Use of DSL Functions in Case Configuration s. 112–115
+#### 4.12.2 Use of DSL Functions in Case Configuration (s. 112–115)
 
 - Karvinen tutki kahta julkista tuotantotason Puppet-konfiguraatiota (Mozilla Release Engineering ja Yhdysvaltain hallinnon USGCB) selvittääkseen, mitä ominaisuuksia todellisuudessa käytetään.
 - Mozillan manifesteissa yli 1 %:n osuuteen yltävät komennot kattoivat 87 % kaikesta käytöstä. Käytetyimmät funktiot olivat `file` (19 %), `package` (10 %), `exec` (6 %) ja `service` (3 %), kun taas kontrollirakenteista korostuivat `case` (20 %), `if` (3 %), `class` (3 %) sekä resurssiriippuvuuksien hallintaan käytetty `anchor` (2 %).
 - USGCB-konfiguraatiossa toistui sama kaava: `augeas` (22,5 %, olemassa olevien tiedostojen muokkaus), `file` (16,7 %), `service` (14,7 %), `exec` (14,7 %) ja `package` (12,7 %).
-- Vaikka työkaluissa on satoja funktioita, käytännön tarpeet katetaan muutamalla perusfunktiolla (taustaprosesseille `package-file-service` ja työasemaohjelmille `package-file`).
+- Vaikka työkaluissa on satoja funktioita, käytännön tarpeet katetaan muutamalla perusfunktiolla: taustaprosesseille `package-file-service` ja työasemaohjelmille `package-file`.
 
-### 4.12.3.1 Dependencies Between Main Functions s. 115–117
+#### 4.12.3.1 Dependencies Between Main Functions (s. 115–117)
 
 - Luvussa tarkastellaan funktioiden riippuvuuksia järjestelmän kehittäjän näkökulmasta. Yleisimmät käyttötapaukset jakautuvat neljään ryhmään: daemon-asetukset (`package`, `file`, `service`), sovellusasetukset (`package`, `file`), käyttäjähallinta (`user`, `group`) ja tiedostojen käsittely (`file`, `directory`, `symlink`).
 - Sisäisesti kaikki toiminnot rakentuvat vain kahden suoraan kohdekoneeseen vaikuttavan perusmekanismin varaan: tiedostojen hallinnan (`file`, `dir`, `symlink`) ja ulkoisten komentojen suorituksen (`exec`).
@@ -125,7 +125,7 @@ Sitten muokkasin `main.yml`-tiedostoa `vsftpd`-kansion alla siten, että muokkaa
     state: restarted
 ```
 
-Sitten ajoin taas Ansiblen komennolla `ansible-playbook site.yml` ja sain muutoksia. Kokeilin vaihtuiko banneri komennolla `ftp localhost`, ja tässä on tulos:
+Sitten ajoin taas Ansiblen komennolla `ansible-playbook site.yml` ja sain muutoksia. Kokeilin, vaihtuiko banneri komennolla `ftp localhost`, ja tässä on tulos:
 
 <img width="870" height="454" alt="kuva" src="https://github.com/user-attachments/assets/b21f9a71-6668-4504-a94d-0e1731c4cc98" />
 
@@ -143,7 +143,7 @@ Seuraavaksi rikoin ympäristön poistamalla `vsftpd`-demonin asetuksineen komenn
 
 <img width="1099" height="362" alt="kuva" src="https://github.com/user-attachments/assets/e55043e6-a61a-4f43-9b35-314274a83ffa" />
 
-Kuva 8. Vsftpd poistettu ja yhteys estynyt.
+Kuva 8. vsftpd poistettu ja yhteys estynyt.
 
 Kun tilanne oli todettu rikkinäiseksi, ajoin Ansible-roolin uudestaan komennolla `ansible-playbook site.yml`. Ansible havaitsi puuttuvan paketin ja asetustiedoston, asensi `vsftpd`:n uudelleen, palautti muokatun `vsftpd.conf`-tiedoston sekä käynnisti demonin:
 
@@ -172,9 +172,12 @@ Tulosteesta nähdään, että kaikki tehtävät palauttivat tilan `ok` ja muutos
 Pari on ilmoitettu Moodleen.
 
 ## Lähteet
-Ansible Documentation 2026. ansible.builtin collection. Luettavissa: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
 
-Debian Manpages 2026. vsftpd.conf(5) — config file for vsftpd. Luettavissa: https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html
+Ansible Documentation 2026. ansible.builtin collection. Luettavissa: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/. Luettu: 24.11.2026.
+
+Debian Manpages 2026. vsftpd.conf(5) — config file for vsftpd. Luettavissa: https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html. Luettu: 24.11.2026.
+
+Karvinen, T. 2023. *Configuration Management of Distributed Systems over Unreliable and Hostile Networks*. Väitöskirja. University of Westminster. Luettavissa: https://westminsterresearch.westminster.ac.uk/download/4cc417566aa9af60fe3826d690719e390abdb7a3c8672f3d51b1eb4ca75e7624/1427236/karvinen-2023-configuration-management-of-distributed-systems.pdf. Luettu: 24.11.2026.
 
 Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
 
