@@ -69,7 +69,7 @@ Tiedostosta `main.yml` tuli seuraavanlainen:
 
 Sitten lisäsin roolin vielä `site.yml`-tiedostoon, ja tämän jälkeen ajoin Ansiblen komennolla `ansible-playbook site.yml`. Alla on tulos ja kokeilu siitä, että vsftpd asentui ja on käynnissä:
 
-<img width="626" height="185" alt="kuva" src="https://github.com/user-attachments/assets/5ce20da6-c8d9-4a41-9920-4d990baffebe" />
+<img width="630" height="265" alt="kuva" src="https://github.com/user-attachments/assets/c319aa8a-e465-4add-869a-87c69f4471c9" />
 
 Kuva 2. Ansiblen ajo.
 
