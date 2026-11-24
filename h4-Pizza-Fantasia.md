@@ -139,6 +139,24 @@ Tässä siis käytin Ansiblea vaihtamaan vsftpd:n bannerin. Käyttömahdollisuuk
 
 ## d) Paikka remonttiin.
 
+Seuraavaksi rikoin ympäristön poistamalla `vsftpd`-demonin asetuksineen komennolla `sudo apt purge -y vsftpd` sekä varmistamalla komennolla `sudo rm -f /etc/vsftpd.conf`, että myös Ansiblen kopioima konfiguraatiotiedosto poistui. Tämän jälkeen varmistin komennoilla `systemctl status vsftpd` ja `ftp localhost`, ettei palvelua enää löytynyt järjestelmästä eikä yhteys toiminut:
+
+<img width="1099" height="362" alt="kuva" src="https://github.com/user-attachments/assets/e55043e6-a61a-4f43-9b35-314274a83ffa" />
+
+Kuva 8. Vsftpd poistettu ja yhteys estynyt.
+
+Kun tilanne oli todettu rikkinäiseksi, ajoin Ansible-roolin uudestaan komennolla `ansible-playbook site.yml`. Ansible havaitsi puuttuvan paketin ja asetustiedoston, asensi `vsftpd`:n uudelleen, palautti muokatun `vsftpd.conf`-tiedoston sekä käynnisti demonin:
+
+<img width="2524" height="493" alt="kuva" src="https://github.com/user-attachments/assets/be575b96-aff6-4099-ace4-cd58169725ac" />
+
+Kuva 9. Ansiblen ajo palauttaa tilanteen.
+
+Lopuksi testasin yhteyden uudestaan komennolla `ftp localhost` ja totesin, että palvelin oli jälleen käynnissä ja c-kohdassa asetettu oma `ftpd_banner` oli palautunut käyttöön:
+
+<img width="770" height="277" alt="kuva" src="https://github.com/user-attachments/assets/e7c8369f-33fe-451f-a516-d61541ce4ee3" />
+
+Kuva 10. Palvelin toimii jälleen mukautetuilla asetuksilla.
+
 ## e) Idempotentti.
 
 ## f) (Vain Pasilan ryhmä -3015)
