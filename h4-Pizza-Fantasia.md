@@ -38,6 +38,13 @@ sudo vsftpd -v
 
 Kuva 1. vsftpd:n asennuksen tarkistus.
 
+Lopuksi poistin vsftpd:n, jotta ansible sitten asentaa sen seuraavassa kohdassa. Käytin tähän komentoja: 
+
+```command
+sudo apt purge -y vsftpd
+sudo rm -f /etc/vsftpd.conf
+```
+
 ## b) Automaatti.
 
 ## c) Asetus.
