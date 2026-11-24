@@ -19,3 +19,6 @@
 Pari on ilmoitettu Moodleen.
 
 ## Lähteet
+Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
+
+Karvinen, T. 2026b. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 24.11.2026.
