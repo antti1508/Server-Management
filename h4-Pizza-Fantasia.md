@@ -79,6 +79,64 @@ Kuva 3. vsftpd-asennus onnistui.
 
 ## c) Asetus.
 
+Aloitustilanne vsftpd:hen yhdistettäessä näyttää seuraavanlaiselta:
+
+<img width="842" height="153" alt="kuva" src="https://github.com/user-attachments/assets/cbda9c16-6190-4bf6-bb37-89136fccc8bc" />
+
+Kuva 4. vsftpd alussa.
+
+Seuraavaksi kopioin konfiguraatiotiedoston Ansiblen alle komennolla `cp /etc/vsftpd.conf roles/vsftpd/files/vsftpd.conf`. Näin saadaan oletusasetukset tiedostoon, ettei tarvitse kaikkea kirjoittaa itse. Sitten muokkailin tiedostoa ohjeiden (Debian Manpages, 2026) avulla niin, että `ftpd_banner`-asetus muuttuu seuraavanlaiseksi: `ftpd_banner=Ansiblen hallitsema vsftpd.`
+
+<img width="1462" height="219" alt="kuva" src="https://github.com/user-attachments/assets/1df8a799-7e5f-4676-8d91-3199a0704637" />
+
+Kuva 5. conf-tiedoston muutos.
+
+Sitten muokkasin `main.yml`-tiedostoa `vsftpd`-kansion alla siten, että muokkaamani conf-tiedosto asetetaan vsftpd:n oletusasetuspolkuun. Lisäksi loin handlerin, joka käynnistää vsftpd:n uudelleen (Ansible Documentation, 2026). Nyt `main.yml` näyttää tältä:
+
+```yaml
+- name: Asenna vsftpd
+  apt:
+    name: vsftpd
+    state: present
+    update_cache: true
+
+- name: Kopioi vsftpd asetustiedosto
+  copy:
+    src: vsftpd.conf
+    dest: /etc/vsftpd.conf
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Käynnistä vsftpd uudelleen
+
+- name: Varmista että vsftpd on käynnissä
+  service:
+    name: vsftpd
+    state: started
+    enabled: true
+```
+
+`handlers`-kansion `main.yml` näyttää seuraavanlaiselta:
+
+```yaml
+- name: Käynnistä vsftpd uudelleen
+  service:
+    name: vsftpd
+    state: restarted
+```
+
+Sitten ajoin taas Ansiblen komennolla `ansible-playbook site.yml` ja sain muutoksia. Kokeilin vaihtuiko banneri komennolla `ftp localhost`, ja tässä on tulos:
+
+<img width="870" height="454" alt="kuva" src="https://github.com/user-attachments/assets/b21f9a71-6668-4504-a94d-0e1731c4cc98" />
+
+Kuva 6. Ansiblen ajo.
+
+<img width="779" height="180" alt="kuva" src="https://github.com/user-attachments/assets/b1fbb013-ac36-465b-9f16-0a1c3607d994" />
+
+Kuva 7. Muutokset tehty Ansiblella.
+
+Tässä siis käytin Ansiblea vaihtamaan vsftpd:n bannerin. Käyttömahdollisuuksiahan on nyt monia, kun todettiin, että oletusarvoinen conf-tiedosto saatiin korvattua ja asetuksia muutettua Ansiblella.
+
 ## d) Paikka remonttiin.
 
 ## e) Idempotentti.
@@ -90,8 +148,8 @@ Pari on ilmoitettu Moodleen.
 ## Lähteet
 Ansible Documentation 2026. ansible.builtin collection. Luettavissa: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/
 
+Debian Manpages 2026. vsftpd.conf(5) — config file for vsftpd. Luettavissa: https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html
+
 Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
 
 Karvinen, T. 2026b. Palvelinten hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 24.11.2026.
-
-https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html
