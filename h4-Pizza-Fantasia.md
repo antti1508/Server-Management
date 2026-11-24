@@ -178,7 +178,7 @@ Ansible Documentation 2026. ansible.builtin collection. Luettavissa: https://doc
 
 Debian Manpages 2026. vsftpd.conf(5) — config file for vsftpd. Luettavissa: https://manpages.debian.org/bookworm/vsftpd/vsftpd.conf.5.en.html. Luettu: 24.11.2026.
 
-Karvinen, T. 2023. *Configuration Management of Distributed Systems over Unreliable and Hostile Networks*. Väitöskirja. University of Westminster. Luettavissa: https://westminsterresearch.westminster.ac.uk/download/4cc417566aa9af60fe3826d690719e390abdb7a3c8672f3d51b1eb4ca75e7624/1427236/karvinen-2023-configuration-management-of-distributed-systems.pdf. Luettu: 24.11.2026.
+Karvinen, T. 2023. Configuration Management of Distributed Systems over Unreliable and Hostile Networks. Väitöskirja. University of Westminster. Luettavissa: https://westminsterresearch.westminster.ac.uk/download/4cc417566aa9af60fe3826d690719e390abdb7a3c8672f3d51b1eb4ca75e7624/1427236/karvinen-2023-configuration-management-of-distributed-systems.pdf. Luettu: 24.11.2026.
 
 Karvinen, T. 2026a. Palvelinten hallinta. Luento 19.11.2026. Haaga-Helia ammattikorkeakoulu.
 
